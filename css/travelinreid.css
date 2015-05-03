@@ -1,0 +1,121 @@
+/*!
+ * Start Bootstrap - The Big Picture HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+
+
+body {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+body {
+	font-family: "geomanistthin", sans-serif;
+	font-size: 22px;
+	line-height: 1.42857143;
+	color: #fff;
+}
+
+
+
+.full {
+  background: url(/images/travelinreid.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.col-md-6 {
+	background-color: none;
+	padding-right: 15px;
+  padding-left: 30px;
+	position: absolute;
+	bottom: 20px;
+}
+
+p {
+	color: #fff;
+}
+
+.intro__description p {
+	text-transform: uppercase;
+	font-family: "geomanistbook", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	font-family: "geomanistmedium", sans-serif;
+	line-height: 1;
+	font-size: 4em;
+	color: #fff;
+	margin: inherit;
+}
+
+@media all and (min-width: 960px) {
+	body{
+		font-size: 22px;
+	}
+}
+
+@media all and (max-width: 959px) and (min-width: 600px) {
+	body{
+		font-size: 1em;
+	}
+
+	.navbar-nav {
+		font-size: 1em;
+	}
+
+	h1 {
+		font-size: 2.6em;
+	}
+	.col-md-6 {
+		width: 50%;
+	}
+}
+
+@media all and (max-width: 599px) and (min-width: 320px) {
+	body{
+		font-size: 1em;
+	}
+
+	h1 {
+		font-size: 1.8em;
+	}
+
+	.col-md-6 {
+		width: 45%;
+	}
+
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+body {
+	font-family: "geomanistlight", sans-serif;
+	font-size: .8em;
+}
+
+h1 {
+	font-size: 1.4em;
+}
+
+.col-md-6 {
+  padding-left: 15px;
+}
+}
