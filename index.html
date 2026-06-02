@@ -1,47 +1,357 @@
 <!DOCTYPE html>
-<html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>travelinreid</title>
+  <meta name="description" content="The official website of T. Reid Williams — working at the intersection of local journalism and civic engagement.">
+  <meta name="keywords" content="travelinreid, Reid Williams, Thomas Reid Williams, local journalism, civic engagement">
+  <meta name="author" content="Reid Williams">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>travelinreid.com</title>
-		<meta name="description" content="The official website of T. Reid Williams" />
-		<meta name="keywords" content="travelinreid, Reid Williams, Thomas Reid Williams, innovation" />
-		<meta name="author" content="Reid Williams"/>
-
-    <!-- travelinreid Identity System (tokens, fonts, components) -->
-    <link href="css/identity.css" rel="stylesheet">
-
-    <!-- Home page styles -->
-    <link href="css/travelinreid.css" rel="stylesheet">
-
-
+  <!-- travelinreid Identity System (tokens, fonts, components) -->
+  <link href="css/identity.css" rel="stylesheet">
+  <!-- Home page styles -->
+  <link href="css/travelinreid.css" rel="stylesheet">
 </head>
-
 <body>
 
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-              <div class="intro__content">
-                <p class="pre_intro">Well, hello there. My name is</p>
-                <h1 class="intro__title">Reid Williams</h1>
-                <p class="pre_intro">I live for outdoor adventure + <br>I work in the intersection of journalism, civics and entrepreneurship.</p>
-                <div class="intro__subtitle">
+<!-- NAV -->
+<nav class="hero-nav" id="site-nav">
+  <a href="#" class="wordmark">travelinreid</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#one-big-idea">One Big Idea</a></li>
+    <li><a href="#dispatches">Dispatches</a></li>
+  </ul>
+</nav>
 
-                  <div class="intro__description">
-                    <p>Looking forward to meeting you.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-photo" id="hero-photo"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow"></p>
+    <h1 class="hero-headline">Hello, there!<br>My name is Reid Williams.</h1>
+    <p class="hero-sub">I live for outdoor adventure + I work at the intersection of journalism and civic engagement. </p>
+    <a href="#about" class="hero-cta">See current work</a>
+  </div>
+  <div class="hero-cycler" aria-label="Cycle background photo">
+    <button type="button" class="hero-cycler__btn" id="hero-cycler-prev" aria-label="Previous photo">‹</button>
+    <button type="button" class="hero-cycler__btn" id="hero-cycler-next" aria-label="Next photo">›</button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div>
+        <p class="about-text">I work at the intersection of local journalism and civic engagement, with a community-service mission, primarily in an amazing county in Southwest Michigan.</p>
+        <p class="about-text" style="margin-top:20px; font-size:16px; color:var(--tr-charcoal-mid);">I talk about "the information ecosystem" a lot. Most of my work focuses on how people engage — or don't — with the systems that shape their daily lives, and how news can be a source of power.</p>
+        <p class="about-text" style="margin-top:20px; font-size:16px; color:var(--tr-charcoal-mid);">This site is a place to document my work in public. Which also means plenty of half-baked ideas.</p>
+        <a href="timeline.html" class="about-link">How I got here</a>
+      </div>
+      <div class="about-meta">
+        <div class="about-meta-item">
+          <span class="about-meta-label">Based in</span>
+          <span class="about-meta-val">Kalamazoo, Michigan</span>
         </div>
+        <div class="about-meta-item">
+          <span class="about-meta-label">Background</span>
+          <span class="about-meta-val">Journalism · Technology · Innovation · Education · Adventure Travel</span>
+        </div>
+        <div class="about-meta-item">
+          <span class="about-meta-label">Contact</span>
+          <span class="about-meta-val"><a href="mailto:hey@travelinreid.com" style="color:var(--tr-blue); text-decoration:none;">hey@travelinreid.com</a></span>
+        </div>
+        <div class="about-meta-item">
+          <span class="about-meta-label">Socials</span>
+          <span class="about-meta-val">@travelinreid</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="framework-section" id="one-big-idea">
+  <div class="framework-inner">
+    <div>
+      <p class="framework-label" style="color: var(--tr-rust)">ONE BIG IDEA</p>
+      <h2 class="framework-title">Making more and more news doesn't make people want news more</h2>
+      <p class="framework-desc">More news is published now than ever before. Supply-side thinking hasn't stopped the decline of the Fourth Estate.</p>
+      <a href="https://dispatches.travelinreid.com/journalisms-demand-problem/" class="framework-link" target="_blank" rel="noopener" style="color: var(--tr-rust)">Can we talk about demand for news?</a>
+    </div>
+  </div>
+</section>
+
+<!-- WORKING THEORY BLOCK -->
+<section class="sig-section">
+  <div class="section-narrow" style="padding-top:64px; padding-bottom:64px;">
+    <div class="sig-block sig-theory">
+      <p class="sig-label"></p>
+      <p class="sig-body">The collapse of local news is also the collapse of civic memory. We lose continuity, institutional history, and shared narrative capacity. People are losing the habits and social capital that make public information usable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVE THREADS -->
+<section class="threads-section" id="threads">
+  <div class="section">
+    <p class="section-label"><span style="color: var(--tr-rust)">MORE HOT TAKES</span></p>
+    <p class="section-intro">Ongoing lines of thinking that connect my work.</p>
+    <div class="thread-grid">
+      <div class="thread-item">
+        <p class="thread-num"></p>
+        <p class="thread-title">Journalism as a service</p>
+        <p class="thread-desc">When we work for products, our job is inevitably ruled by them.</p>
+        <a href="https://dispatches.travelinreid.com/news-is-not-the-product/" class="thread-link" target="_blank" rel="noopener">The real product is</a>
+      </div>
+      <div class="thread-item">
+        <p class="thread-num"></p>
+        <p class="thread-title">'Citizen' as a verb</p>
+        <p class="thread-desc">I worry we've taken for granted what we should be actively maintaining.</p>
+        <a href="https://dispatches.travelinreid.com/vote-every-day-in-8-languages/" class="thread-link" target="_blank" rel="noopener">We vote every day</a>
+      </div>
+      <div class="thread-item">
+        <p class="thread-num"></p>
+        <p class="thread-title">We're a lot like birds</p>
+        <p class="thread-desc">People murmurate more than we realize, and some of our systems have led us astray.</p>
+        <a href="https://dispatches.travelinreid.com/cargo-cult-thinking-and-the-news-business/" class="thread-link" target="_blank" rel="noopener">Institutions are flocks</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT WORK — temporarily hidden; preserved for possible reinstatement -->
+<section class="work-section" id="work" style="display:none;">
+  <div class="section">
+    <p class="section-label">OTHER WORK</p>
+    <p class="section-intro">The plates spinning, the balls juggling, the idea-cats herding.</p>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="status-badge s-testing"><span class="status-dot"></span>Testing</span>
+      </div>
+      <p class="project-title">Rebuilding the local voters' forum model</p>
+      <p class="project-desc">Designing and running community-centered forums that surface what residents actually want—not what candidates want to argue about.</p>
+      <div class="project-links">
+        <a href="#" class="proj-link">View project</a>
+        <a href="#" class="proj-link">Latest update</a>
+      </div>
     </div>
 
-</body>
+    <div class="project-item">
+      <div class="project-header">
+        <span class="status-badge s-progress"><span class="status-dot"></span>In Progress</span>
+      </div>
+      <p class="project-title">Local journalism as civic infrastructure</p>
+      <p class="project-desc">Exploring how a nonprofit newsroom can function as a service that increases participation—not just publishes information.</p>
+      <div class="project-links">
+        <a href="#" class="proj-link">View project</a>
+        <a href="#" class="proj-link">Latest update</a>
+      </div>
+    </div>
 
+    <div class="project-item">
+      <div class="project-header">
+        <span class="status-badge s-draft"><span class="status-dot"></span>Draft</span>
+      </div>
+      <p class="project-title">FOIA as a public tool, not a specialist skill</p>
+      <p class="project-desc">Mapping how access to public records can be made usable for everyday residents.</p>
+      <div class="project-links">
+        <a href="#" class="proj-link">View project</a>
+      </div>
+    </div>
+
+    <a href="#" class="see-all">See all active work →</a>
+  </div>
+</section>
+
+<!-- PROJECTS ROW -->
+<div class="projects-row">
+  <div class="projects-row-inner">
+    <div>
+      <p class="projects-row-headline">Works in progress</p>
+    </div>
+    <div class="projects-chips">
+      <a href="https://nowkalamazoo.org" class="chip" target="_blank" rel="noopener">NowKalamazoo</a>
+      <a href="https://localjournalismfoundation.org" class="chip" target="_blank" rel="noopener">Local Journalism Foundation</a>
+      <a href="https://shared-meaning.travelinreid.com" class="chip" target="_blank" rel="noopener">Shared Meaning</a>
+    </div>
+  </div>
+</div>
+
+<!-- DISPATCHES — latest posts pulled live from the Ghost blog -->
+<section class="dispatches-section" id="dispatches"
+         data-ghost-url="https://dispatches.travelinreid.com" data-posts-limit="4">
+  <div class="section">
+    <p class="section-label">Recent Dispatches</p>
+    <div class="dispatch-grid" id="dispatch-grid">
+      <!-- Empty-state fallback; replaced at runtime by live Ghost posts -->
+      <div class="dispatch-empty">
+        <p class="dispatch-empty-text">Posts are loading from the blog. If nothing appears, head straight over to read the latest.</p>
+      </div>
+    </div>
+    <a href="https://dispatches.travelinreid.com" class="see-all" style="margin-top:32px; display:inline-block;" target="_blank" rel="noopener">View all dispatches →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-wordmark">travelinreid</span>
+      <button type="button" class="footer-info-btn" id="footer-info-btn" aria-label="About the name travelinreid" aria-haspopup="dialog">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="11" x2="12" y2="16.5"></line>
+          <circle cx="12" cy="7.75" r="0.9" fill="currentColor" stroke="none"></circle>
+        </svg>
+      </button>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#one-big-idea">One Big Idea</a></li>
+      <li><a href="#dispatches">Dispatches</a></li>
+      <li><a href="mailto:hey@travelinreid.com">hey@travelinreid.com</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Reid Williams</span>
+  </div>
+</footer>
+
+<!-- INFO MODAL -->
+<div class="info-modal-backdrop" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-modal-title" aria-hidden="true">
+  <div class="info-modal" role="document">
+    <button type="button" class="info-modal-close" id="info-modal-close" aria-label="Close">×</button>
+    <p class="info-modal-label">About the name</p>
+    <h3 class="info-modal-title" id="info-modal-title">Why &ldquo;travelinreid&rdquo;?</h3>
+    <div class="info-modal-body">
+      <p>It&rsquo;s &ldquo;traveling&rdquo; &mdash; minus the &ldquo;g&rdquo; &mdash; plus Reid.</p>
+      <p>In 2000, the first email address I ever obtained for myself I needed because I was taking a trip abroad and needed a way to communicate with everyone back home. As opposed to my &ldquo;work email&rdquo; &mdash; which back then was only accessible on-premises &mdash; this was to be my &ldquo;traveling email.&rdquo;</p>
+      <p>Without thinking too much about it, that became the moniker for social media handles and more. Sorry. Lame story, I know.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── NAV SCROLL BEHAVIOR ──
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+      nav.classList.remove('hero-nav');
+    } else {
+      nav.classList.add('hero-nav');
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // ── HERO PHOTO CYCLER ──
+  const HERO_PHOTOS = [
+    { src: 'images/hero-portrait.jpg',      position: 'center 30%' },
+    { src: 'images/hero-sailing.webp',      position: '72% 40%' },
+    { src: 'images/hero-snowboarding.jpeg', position: 'center 40%' },
+  ];
+  const heroPhoto = document.getElementById('hero-photo');
+  let heroIdx = Math.floor(Math.random() * HERO_PHOTOS.length);
+  function applyHeroPhoto() {
+    const p = HERO_PHOTOS[heroIdx];
+    const img = new Image();
+    img.onload = () => {
+      heroPhoto.classList.add('fading');
+      setTimeout(() => {
+        heroPhoto.style.backgroundImage = `url('${p.src}')`;
+        heroPhoto.style.backgroundPosition = p.position;
+        heroPhoto.classList.remove('fading');
+      }, 220);
+    };
+    img.src = p.src;
+  }
+  heroPhoto.style.backgroundImage = `url('${HERO_PHOTOS[heroIdx].src}')`;
+  heroPhoto.style.backgroundPosition = HERO_PHOTOS[heroIdx].position;
+  document.getElementById('hero-cycler-next').addEventListener('click', () => {
+    heroIdx = (heroIdx + 1) % HERO_PHOTOS.length;
+    applyHeroPhoto();
+  });
+  document.getElementById('hero-cycler-prev').addEventListener('click', () => {
+    heroIdx = (heroIdx - 1 + HERO_PHOTOS.length) % HERO_PHOTOS.length;
+    applyHeroPhoto();
+  });
+
+  // ── INFO MODAL ──
+  (function () {
+    const btn      = document.getElementById('footer-info-btn');
+    const modal    = document.getElementById('info-modal');
+    const closeBtn = document.getElementById('info-modal-close');
+    const dialog   = modal.querySelector('.info-modal');
+
+    function openModal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      setTimeout(() => closeBtn.focus(), 0);
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    btn.addEventListener('click', (e) => { e.stopPropagation(); openModal(); });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (!dialog.contains(e.target)) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
+
+  // ── RECENT DISPATCHES (live from Ghost Content API) ──
+  (function () {
+    // Read-only Content API key — safe to expose in client-side code.
+    const GHOST_CONTENT_API_KEY = 'fd3b1a710ef3c5871cc762d3ca';
+    const section = document.getElementById('dispatches');
+    const grid    = document.getElementById('dispatch-grid');
+    if (!section || !grid || !GHOST_CONTENT_API_KEY || GHOST_CONTENT_API_KEY.startsWith('%%')) return;
+
+    const ghostUrl = (section.dataset.ghostUrl || '').replace(/\/$/, '');
+    const limit    = section.dataset.postsLimit || 4;
+    // `html` is required for Ghost to compute `reading_time` (it's derived from post body, not stored).
+    const fields   = 'title,url,published_at,custom_excerpt,excerpt,reading_time,html';
+    const endpoint = `${ghostUrl}/ghost/api/content/posts/?key=${GHOST_CONTENT_API_KEY}`
+      + `&limit=${limit}&fields=${fields}&order=published_at%20desc`;
+
+    const fmtDate = (iso) =>
+      new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const clamp = (s, n) => (s && s.length > n ? s.slice(0, n).trimEnd() + '…' : (s || ''));
+    const esc = (s) => {
+      const d = document.createElement('div');
+      d.textContent = s == null ? '' : s;
+      return d.innerHTML;
+    };
+
+    fetch(endpoint)
+      .then((r) => { if (!r.ok) throw new Error('Ghost ' + r.status); return r.json(); })
+      .then((data) => {
+        const posts = data && data.posts;
+        if (!Array.isArray(posts) || posts.length === 0) return; // keep empty-state fallback
+        grid.innerHTML = posts.map((post) => {
+          const meta = [
+            fmtDate(post.published_at),
+            post.reading_time ? `${post.reading_time} min read` : null,
+          ].filter(Boolean).join(' · ');
+          const excerpt = clamp(post.custom_excerpt || post.excerpt || '', 140);
+          return `
+            <div class="dispatch-item">
+              <p class="dispatch-meta">${esc(meta)}</p>
+              <p class="dispatch-title">${esc(post.title)}</p>
+              <p class="dispatch-excerpt">${esc(excerpt)}</p>
+              <a href="${esc(post.url)}" class="dispatch-link" target="_blank" rel="noopener">Continue</a>
+            </div>`;
+        }).join('');
+      })
+      .catch(() => { /* network/API error — leave empty-state fallback in place */ });
+  })();
+</script>
+</body>
 </html>
