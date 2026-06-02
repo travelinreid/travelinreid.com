@@ -328,7 +328,7 @@ hr.rule {
   gap: 0;
 }
 .thread-item {
-  padding: 32px 32px 32px 0;
+  padding: 32px;
   border-right: 1px solid var(--tr-rule);
   display: flex;
   flex-direction: column;
