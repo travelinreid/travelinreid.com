@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLBA Compliance Data, Illustrated — travelinreid</title>
+<meta name="description" content="Twelve charted findings from the Detroit Land Bank Authority compliance dataset, built for the SI 538 client engagement.">
+<meta name="author" content="Reid Williams">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/png" href="../images/favicon.png">
+
+<!-- travelinreid Identity System (tokens, fonts, components) -->
+<link href="../css/identity.css" rel="stylesheet">
+<!-- Page-specific styles -->
+<link href="../css/dlba-data-analysis.css" rel="stylesheet">
+<!-- Leaflet (self-hosted, no external CDN — see geo/ for source + boundary data) -->
+<link href="geo/leaflet.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ══════════════════════ PASSWORD GATE ══════════════════════
+     This is a client-side check only — GitHub Pages can't do real
+     server-side auth. It keeps the page out of search results and
+     off casual visitors; anyone who opens dev tools can get past it.
+     Password hash below is SHA-256, not plaintext. To change the
+     password: open a browser console anywhere and run
+     `crypto.subtle.digest('SHA-256', new TextEncoder().encode('yournewpassword')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))`
+     then paste the result into GATE_HASH below. -->
+<div id="gate">
+  <div class="gate-card">
+    <span class="wordmark">travelinreid</span>
+    <h2>This page is private</h2>
+    <p>Enter the password to view the DLBA compliance data analysis.</p>
+    <form class="gate-form" id="gate-form" autocomplete="off">
+      <input type="password" id="gate-input" placeholder="Password" autofocus>
+      <button type="submit">Enter</button>
+      <div class="gate-error" id="gate-error"></div>
+    </form>
+  </div>
+</div>
+
+<div id="page-content">
+
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav class="nav-bar page-nav">
+  <a href="https://travelinreid.com/" class="wordmark">travelinreid</a>
+  <ul class="nav-links">
+    <li><a href="https://travelinreid.com/" class="back">Home</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow" data-c="heroEyebrow"></p>
+    <h1 data-c="heroTitle"></h1>
+    <p class="lede" data-c-html="heroLede"></p>
+    <div class="stat-row">
+      <div class="stat-tile"><div class="stat-value critical">21.0%</div><div class="stat-label" data-c="stat1"></div></div>
+      <div class="stat-tile"><div class="stat-value">24% <span class="mono" style="font-size:14px;color:var(--ink-muted)">vs</span> 14%</div><div class="stat-label" data-c="stat2"></div></div>
+      <div class="stat-tile"><div class="stat-value critical">1,083</div><div class="stat-label" data-c="stat3"></div></div>
+      <div class="stat-tile"><div class="stat-value">1.6% <span class="mono" style="font-size:14px;color:var(--ink-muted)">–</span> 41.5%</div><div class="stat-label" data-c="stat4"></div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="inner" id="tocLinks"></div></nav>
+
+<div class="wrap">
+
+  <section class="finding" id="s2">
+    <div class="finding-head"><span class="finding-num">01</span><h2 data-c="s2Title"></h2></div>
+    <p class="finding-claim" data-c="s2Claim"></p>
+    <div class="panels single">
+      <div class="card wide">
+        <h3>Reconveyance rate under three denominators — with and without NAP</h3>
+        <p class="card-meta">Non‑NAP: n = 18,563 ever sold, 15,066 closed · Including NAP: n = 21,600 ever sold, 17,576 closed</p>
+        <div class="legend">
+          <div class="item"><span class="swatch" style="background:var(--ink-secondary)"></span>Standard figure (excludes NAP)</div>
+          <div class="item"><span class="swatch" style="background:var(--ink-secondary);opacity:0.4"></span>Including NAP cases</div>
+        </div>
+        <div class="chart-container" id="chart-failure-rate" style="max-width:780px"></div>
+        <div class="callout" style="margin-top:12px" data-c-html="s2Callout"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s3">
+    <div class="finding-head"><span class="finding-num">02</span><h2 data-c="s3Title"></h2></div>
+    <p class="finding-claim" data-c="s3Claim"></p>
+    <div class="panels">
+      <div class="card">
+        <h3>Reconveyance rate by channel</h3>
+        <p class="card-meta">Of closed cases in each channel</p>
+        <div class="chart-container" id="chart-channel-rate"></div>
+      </div>
+      <div class="card">
+        <h3>Time to compliance by channel</h3>
+        <p class="card-meta">Median vs. 90th‑percentile days, achieved cases</p>
+        <div class="chart-container" id="chart-channel-timeline"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s4">
+    <div class="finding-head"><span class="finding-num">03</span><h2 data-c="s4Title"></h2></div>
+    <p class="finding-claim" data-c-html="s4Claim"></p>
+    <div class="panels triple">
+      <div class="card">
+        <h3>At‑risk share by items completed</h3>
+        <p class="card-meta">In‑progress cases, by Core Items Completed (0–5)</p>
+        <div class="chart-container" id="chart-core-risk"></div>
+      </div>
+      <div class="card">
+        <h3>Time open by items completed</h3>
+        <p class="card-meta">Median days since purchase agreement</p>
+        <div class="chart-container" id="chart-core-days"></div>
+      </div>
+      <div class="card">
+        <h3>Still missing, at "Core = 5"</h3>
+        <p class="card-meta">Share still lacking each closeout item (n=1,083)</p>
+        <div class="chart-container" id="chart-core-missing"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s5">
+    <div class="finding-head"><span class="finding-num">04</span><h2 data-c="s5Title"></h2></div>
+    <p class="finding-claim" data-c="s5Claim"></p>
+    <div class="panels single">
+      <div class="card wide">
+        <h3>Share of cases carrying each signal, by status</h3>
+        <p class="card-meta">In‑progress cases, ordered low‑risk to high‑risk</p>
+        <div class="legend">
+          <div class="item"><span class="swatch" style="background:var(--series-blue)"></span>Property‑tax delinquency</div>
+          <div class="item"><span class="swatch" style="background:var(--series-yellow)"></span>Active foreclosure flag</div>
+        </div>
+        <div class="chart-container" id="chart-risk-signals" style="max-width:800px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s6">
+    <div class="finding-head"><span class="finding-num">05</span><h2 data-c="s6Title"></h2></div>
+    <p class="finding-claim" data-c="s6Claim"></p>
+    <div class="panels single">
+      <div class="card" style="max-width:420px">
+        <h3>Reconveyance rate by structure type</h3>
+        <p class="card-meta">Of closed cases</p>
+        <div class="chart-container" id="chart-structure"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s7">
+    <div class="finding-head"><span class="finding-num">06</span><h2 data-c="s7Title"></h2></div>
+    <p class="finding-claim" data-c-html="s7Claim"></p>
+    <div class="panels">
+      <div class="card">
+        <h3>Highest reconveyance rate</h3>
+        <p class="card-meta">Neighborhoods with ≥ 40 closed cases</p>
+        <div class="chart-container" id="chart-neigh-top"></div>
+      </div>
+      <div class="card">
+        <h3>Lowest reconveyance rate</h3>
+        <p class="card-meta">Neighborhoods with ≥ 40 closed cases</p>
+        <div class="chart-container" id="chart-neigh-bottom"></div>
+      </div>
+      <div class="card wide">
+        <h3>Explore by census tract or ZIP code</h3>
+        <p class="card-meta">Real Census TIGER/Line boundaries — 625 Wayne County tracts and 29 ZIP codes touching DLBA cases · toggle geography and metric, or switch to the table</p>
+        <div class="geo-explorer" id="geoExplorer">
+          <div class="geo-controls">
+            <div class="seg" role="group" aria-label="Geography">
+              <button type="button" class="seg-btn active" data-geo="tract">Census tract</button>
+              <button type="button" class="seg-btn" data-geo="zip">ZIP code</button>
+            </div>
+            <label class="geo-field">
+              <span>Color by</span>
+              <select id="geoMetricSelect">
+                <option value="reconveyance_rate_pct">Reconveyance rate</option>
+                <option value="closed_n">Closed cases</option>
+                <option value="at_risk_pct">Share currently at risk</option>
+                <option value="tax_delinquent_pct">Tax delinquent</option>
+                <option value="median_days_to_compliance">Median days to compliance</option>
+              </select>
+            </label>
+            <div class="seg" role="group" aria-label="View">
+              <button type="button" class="seg-btn active" data-view="map">Map</button>
+              <button type="button" class="seg-btn" data-view="table">Table</button>
+            </div>
+          </div>
+          <div class="chart-container geo-map-wrap" id="chart-geo-map"></div>
+          <div class="tbl-wrap geo-table-wrap" id="geoTableWrap" hidden>
+            <table class="datatable" id="geoTable"></table>
+          </div>
+          <div class="legend"></div>
+          <p class="note" data-c-html="s7MapNote"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s8">
+    <div class="finding-head"><span class="finding-num">07</span><h2 data-c="s8Title"></h2></div>
+    <p class="finding-claim" data-c="s8Claim"></p>
+    <div class="panels single">
+      <div class="card wide">
+        <h3>Purchase-year cohorts: outcome and how much is still unresolved</h3>
+        <p class="card-meta">Stacked case counts by year of purchase agreement</p>
+        <div class="legend">
+          <div class="item"><span class="swatch" style="background:var(--series-aqua)"></span>Achieved</div>
+          <div class="item"><span class="swatch" style="background:var(--status-critical)"></span>Reconveyed</div>
+          <div class="item"><span class="swatch" style="background:var(--ink-muted)"></span>Still in progress (unresolved)</div>
+        </div>
+        <div class="chart-container" id="chart-cohort-stack"></div>
+      </div>
+      <div class="card wide">
+        <h3>Reconveyance rate of closed cases, by cohort year</h3>
+        <p class="card-meta">Faded bars = cohort still mostly unresolved — rate not yet meaningful</p>
+        <div class="chart-container" id="chart-cohort-rate"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s9">
+    <div class="finding-head"><span class="finding-num">08</span><h2 data-c="s9Title"></h2></div>
+    <p class="finding-claim" data-c="s9Claim"></p>
+    <div class="panels single">
+      <div class="card wide">
+        <h3>Distribution of accumulated "Days Delinquent" at reconveyance</h3>
+        <p class="card-meta">Reconveyed cases, n = 2,954</p>
+        <div class="chart-container" id="chart-delinq-range" style="max-width:760px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s10">
+    <div class="finding-head"><span class="finding-num">09</span><h2 data-c="s10Title"></h2></div>
+    <p class="finding-claim" data-c="s10Claim"></p>
+    <div class="panels">
+      <div class="card">
+        <h3>By final sale price</h3>
+        <p class="card-meta">Quintiles of price paid (post‑discount)</p>
+        <div class="chart-container" id="chart-price"></div>
+      </div>
+      <div class="card">
+        <h3>By floor area</h3>
+        <p class="card-meta">Quintiles of building floor area (sq ft)</p>
+        <div class="chart-container" id="chart-sqft"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="s11">
+    <div class="finding-head"><span class="finding-num">10</span><h2 data-c="s11Title"></h2></div>
+    <p class="finding-claim" data-c="s11Claim"></p>
+    <div class="panels single">
+      <div class="card wide">
+        <div class="callout" data-c-html="s11Callout"></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="page-footer"><div class="wrap">Source: "Aug 2026 UM Compliance Data (De‑identified)" and accompanying data dictionary, provided by DLBA. Prepared by Reid Williams, with assistance by Claude.ai, for SI 538, Citizen Interaction Design, University of Michigan School of Information. <a href="https://travelinreid.com/">travelinreid.com</a></div></footer>
+
+</div><!-- /#page-content -->
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// EDITABLE CONTENT — headlines & descriptions live here.
+// Edit the strings below and refresh; nothing else needs to change.
+// Values ending in *Html or named *Callout may contain simple tags
+// like <strong> and <em>. Everything else is plain text.
+// ══════════════════════════════════════════════════════════════
+const CONTENT = {
+  heroEyebrow: "DLBA Compliance Data · SI 538",
+  heroTitle: "What does the compliance data tell us that the DLBA didn't?",
+  heroLede: "A preliminary analysis of the Detroit Land Bank Authority's compliance data, built for the SI 538 Citizen Interaction Design client engagement. Hover over visualizations for additional data. Analysis and creation of the visualizations were done with assistance from Claude.ai.",
+  stat1: "actual reconveyance rate, among allclosed cases",
+  stat2: "reconveyance rate, Own‑It‑Now vs. Auction buyers",
+  stat3: "in‑progress properties with all core rehab items done, still stuck after a median of 4.2 years",
+  stat4: "reconveyance rate spread across Detroit neighborhoods",
+
+  s2Title: "What is the reconveyance rate, really?",
+  s2Claim: "The \"14% failure rate\" cited in the syllabus and brief undercounts what this data shows, once we remove \"Nuisance Abatement Properties\" \(NAP\).",
+  s2Callout: "NAP cases are booked as achieved or still in progress only \u2014 none has ever been coded as reconveyed \u2014 so folding them back into these denominators doesn't change the reconveyance count, it only dilutes it. Fold in NAP data, and the reconveyance rate falls from 17.0% to 14.6%, and the closed\u2011case rate falls from 21.0% to 18.0%. It might be worth asking DLBA directly which population and denominator produce their number rather than assuming. NAP looks like a structurally different track that resolves faster \u2014 349\u2011day median vs. 561\u2013658 days for Own\u2011It\u2011Now/Auction.",
+
+  s3Title: "Is one program or channel driving the reconveyance problem?",
+  s3Claim: "Own‑It‑Now buyers fail at nearly double the rate of Auction buyers, and take longer to reach compliance overall.",
+
+  s4Title: "A large population has finished the rehab and is still stuck",
+  s4Claim: "A major finding: properties that complete all five substantive rehab items carry the <em>highest</em> reconveyance risk of any completion tier — and have been open for years. The first chart shows, for each Core Items Completed tier (0 through 5), what share of cases in that tier currently carry one of three statuses: \"Potential Reconveyance,\" \"Court Action Recommended,\" and \"Reconveyance In Process.\"",
+
+  s5Title: "Could tax delinquency and foreclosure status be early‑warning signals?",
+  s5Claim: "Both are linked, and both climb sharply once a case is flagged for reconveyance. If DLBA could give us dates for these events, we could ask whether tax delinquency and foreclosure are predictive of reconveyance.",
+
+  s6Title: "Does the type of property have any correlation with reconveyance rate?",
+  s6Claim: "Multi‑unit properties fail more often than single‑family homes — a hint that physical scope matters. (More on this below.)",
+
+  s7Title: "Reconveyance rates vary enormously by geography",
+  s7Claim: "Roughly a 26‑fold spread across neighborhoods, and a meaningful gap across council districts too. The interactive map below plots real 2020 Census tract and ZIP code boundaries — Detroit's actual geography.",
+  s7MapNote: "Boundaries: U.S. Census Bureau 2020 TIGER/Line (tracts) and ZIP Code Tabulation Areas, joined to this dataset's case addresses by tract number and ZIP. Gray areas have no DLBA cases in this export — mostly suburban Wayne County outside city limits, where DLBA doesn't operate. Faded areas have fewer than 15 cases and should be read cautiously.",
+  s7Callout: "The strongest of these — weak and not significant on its own (r = 0.54, p = 0.21) — touches a theme one CDO interview raised, though about a different problem: CDO4 argued for market-rate (rather than deeply subsidized) rehabs specifically to combat the chronic undervaluation of homes in what the interview analysis calls \"concentrated-poverty, majority-Black neighborhoods\" — a comps/property-value argument, not a claim about reconveyance rates. Seven districts is far too few to test whether that same dynamic touches reconveyance, and this isn't evidence that it does — but districts 4 and 5 (highest reconveyance here) and district 6 (lowest, and the one district that isn't majority‑Black) aren't inconsistent with it either.",
+
+  s8Title: "The recent-cohort \"improvement\" is very likely a statistical illusion",
+  s8Claim: "A real pandemic-era spike, followed by an apparent decline that's mostly just recent purchases not having had time to fail yet. See the section below on \"Days Delinquent\" and how long it takes after purchase before reconveyance shows up.",
+
+  s9Title: "DLBA waits years before reconveying",
+  s9Claim: "Reconveyed properties accumulate a median of 4.8 years of \"delinquent\" status — time since the last extension — before DLBA finally acts. The max \"Days Delinquent\" in the dataset is almost 12 years.",
+
+  s10Title: "Price paid and floor area are actually pretty good predictors of reconveyance",
+  s10Claim: "Cheaper purchases fail more; and larger buildings fail more. The two effects are also independent of each other, and they correlate even when controlling for acquisition channel and purchase-year cohort.",
+
+  s11Title: "What this data can't tell us",
+  s11Claim: "We have a major blind spot into what else might be contributing to reconveyace.",
+  s11Callout: "No buyer‑level demographic data.</strong> The compliance data carries no race, income, or household information about buyers. I think this is worth a direct, specific data request to DLBA for us to explore further, if we want to tailor solutions with a better fit for property owners."
+};
+
+document.querySelectorAll('[data-c]').forEach(el => {
+  const key = el.dataset.c;
+  if (CONTENT[key] != null) el.textContent = CONTENT[key];
+});
+document.querySelectorAll('[data-c-html]').forEach(el => {
+  const key = el.dataset.cHtml;
+  if (CONTENT[key] != null) el.innerHTML = CONTENT[key];
+});
+</script>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// PASSWORD GATE — client-side only (see comment near #gate above).
+// ══════════════════════════════════════════════════════════════
+(function () {
+  const GATE_HASH = "115cd16836eabf9faa40b657e554b82b19509636f635cc9fdfc8a344af232bb0";
+  const SESSION_KEY = "dlba_gate_unlocked";
+  const gate = document.getElementById("gate");
+  const content = document.getElementById("page-content");
+  const form = document.getElementById("gate-form");
+  const input = document.getElementById("gate-input");
+  const errorEl = document.getElementById("gate-error");
+
+  function reveal() {
+    gate.classList.add("hidden");
+    content.classList.add("revealed");
+  }
+
+  async function sha256Hex(text) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  try {
+    if (sessionStorage.getItem(SESSION_KEY) === "1") reveal();
+  } catch (e) { /* sessionStorage unavailable — fall through to prompt */ }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const hash = await sha256Hex(input.value);
+    if (hash === GATE_HASH) {
+      try { sessionStorage.setItem(SESSION_KEY, "1"); } catch (e) {}
+      errorEl.textContent = "";
+      reveal();
+    } else {
+      errorEl.textContent = "That's not it — try again.";
+      input.select();
+    }
+  });
+})();
+</script>
+
+<!-- Leaflet core, self-hosted (see geo/leaflet.js) -->
+<script src="geo/leaflet.js"></script>
+
+<script>
+const svgNS = "http://www.w3.org/2000/svg";
+
+function el(tag, attrs) {
+  const e = document.createElementNS(svgNS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+function makeSvg(container, w, h) {
+  const svg = el("svg", { viewBox: `0 0 ${w} ${h}` });
+  container.appendChild(svg);
+  return svg;
+}
+
+function tipFor(container) {
+  if (!container._tip) {
+    const tip = document.createElement("div");
+    tip.className = "tooltip";
+    container.appendChild(tip);
+    container._tip = tip;
+  }
+  return container._tip;
+}
+function showTip(e, container, html) {
+  const tip = tipFor(container);
+  const rect = container.getBoundingClientRect();
+  tip.innerHTML = html;
+  tip.style.left = (e.clientX - rect.left) + "px";
+  tip.style.top = (e.clientY - rect.top - 10) + "px";
+  tip.style.opacity = "1";
+}
+function hideTip(container) { if (container._tip) container._tip.style.opacity = "0"; }
+
+// ---- Vertical bar chart (single or per-bar colored) ----
+function vBarChart(containerId, data, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 420, h: 250, maxVal: null, unit: "%", gridStep: null, valueKey: "rate", colorKey: null, defaultColor: "var(--series-blue)" }, opts);
+  const margin = { top: 18, right: 10, bottom: o.catLines ? 44 : 34, left: 30 };
+  const plotW = o.w - margin.left - margin.right, plotH = o.h - margin.top - margin.bottom;
+  const maxVal = o.maxVal || Math.max(...data.map(d => d[o.valueKey])) * 1.15;
+  const gridStep = o.gridStep || niceStep(maxVal);
+  const svg = makeSvg(container, o.w, o.h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+
+  for (let v = 0; v <= maxVal; v += gridStep) {
+    const y = plotH - (v / maxVal) * plotH;
+    g.appendChild(el("line", { x1: 0, x2: plotW, y1: y, y2: y, class: v === 0 ? "baseline-l" : "gridline" }));
+    const t = el("text", { x: -6, y: y + 3, "text-anchor": "end", class: "axis-label" });
+    t.textContent = (o.unit === "%" ? v : v.toLocaleString()) + (o.unit === "%" ? "%" : "");
+    g.appendChild(t);
+  }
+
+  const n = data.length, slot = plotW / n, barW = Math.min(o.barW || 42, slot * 0.6);
+  data.forEach((d, i) => {
+    const cx = slot * i + slot / 2;
+    const val = d[o.valueKey];
+    const barH = (val / maxVal) * plotH;
+    const y = plotH - barH;
+    const color = o.colorKey ? d[o.colorKey] : (d.color || o.defaultColor);
+    const rect = el("rect", { x: cx - barW / 2, y, width: barW, height: Math.max(barH, 1), rx: 4, fill: color, opacity: d.opacity || 1, class: "bar" });
+    rect.addEventListener("mousemove", (e) => showTip(e, container, o.tipHtml ? o.tipHtml(d) : `<strong>${val}${o.unit}</strong>`));
+    rect.addEventListener("mouseleave", () => hideTip(container));
+    g.appendChild(rect);
+
+    const vl = el("text", { x: cx, y: y - 6, "text-anchor": "middle", class: o.labelClass || "bar-label" });
+    vl.textContent = (o.valueFmt ? o.valueFmt(val) : val + o.unit);
+    g.appendChild(vl);
+
+    const lines = (d.label || "").split("\n");
+    lines.forEach((ln, li) => {
+      const cl = el("text", { x: cx, y: plotH + 15 + li * 11.5, "text-anchor": "middle", class: "cat-label" });
+      cl.textContent = ln;
+      g.appendChild(cl);
+    });
+  });
+}
+
+function niceStep(maxVal) {
+  const raw = maxVal / 4;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const norm = raw / mag;
+  let step;
+  if (norm < 1.5) step = 1; else if (norm < 3.5) step = 2; else if (norm < 7.5) step = 5; else step = 10;
+  return step * mag;
+}
+
+// ---- Grouped bar chart (2 series) ----
+function groupedBarChart(containerId, data, series, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 460, h: 260, unit: "", maxVal: null }, opts);
+  const margin = { top: 18, right: 10, bottom: 50, left: 34 };
+  const plotW = o.w - margin.left - margin.right, plotH = o.h - margin.top - margin.bottom;
+  let maxVal = o.maxVal;
+  if (!maxVal) {
+    let m = 0;
+    data.forEach(d => series.forEach(s => m = Math.max(m, d[s.key])));
+    maxVal = m * 1.2;
+  }
+  const gridStep = niceStep(maxVal);
+  const svg = makeSvg(container, o.w, o.h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+  for (let v = 0; v <= maxVal; v += gridStep) {
+    const y = plotH - (v / maxVal) * plotH;
+    g.appendChild(el("line", { x1: 0, x2: plotW, y1: y, y2: y, class: v === 0 ? "baseline-l" : "gridline" }));
+    const t = el("text", { x: -6, y: y + 3, "text-anchor": "end", class: "axis-label" });
+    t.textContent = Math.round(v) + (o.unit || "");
+    g.appendChild(t);
+  }
+  const n = data.length, slot = plotW / n;
+  const groupW = slot * 0.66, barW = groupW / series.length - 4;
+  data.forEach((d, i) => {
+    const gx = slot * i + slot / 2 - groupW / 2;
+    series.forEach((s, si) => {
+      const val = d[s.key];
+      const barH = (val / maxVal) * plotH;
+      const x = gx + si * (barW + 4);
+      const y = plotH - barH;
+      const rect = el("rect", { x, y, width: barW, height: Math.max(barH, 1), rx: 3, fill: s.color, class: "bar" });
+      rect.addEventListener("mousemove", (e) => showTip(e, container, `<strong>${s.label}: ${val}${o.unit || ""}</strong><br>${d.label.replace(/\n/g, " ")}`));
+      rect.addEventListener("mouseleave", () => hideTip(container));
+      g.appendChild(rect);
+      const vl = el("text", { x: x + barW / 2, y: y - 5, "text-anchor": "middle", class: "bar-label", "font-size": "9.5" });
+      vl.textContent = val;
+      g.appendChild(vl);
+    });
+    const lines = d.label.split("\n");
+    lines.forEach((ln, li) => {
+      const cl = el("text", { x: slot * i + slot / 2, y: plotH + 15 + li * 11.5, "text-anchor": "middle", class: "cat-label" });
+      cl.textContent = ln;
+      g.appendChild(cl);
+    });
+  });
+}
+
+// ---- Stacked risk bar (count, split into at-risk / not) ----
+function stackedRiskChart(containerId, data, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 420, h: 250 }, opts);
+  const margin = { top: 18, right: 10, bottom: 34, left: 34 };
+  const plotW = o.w - margin.left - margin.right, plotH = o.h - margin.top - margin.bottom;
+  const maxVal = Math.max(...data.map(d => d.n)) * 1.15;
+  const gridStep = niceStep(maxVal);
+  const svg = makeSvg(container, o.w, o.h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+  for (let v = 0; v <= maxVal; v += gridStep) {
+    const y = plotH - (v / maxVal) * plotH;
+    g.appendChild(el("line", { x1: 0, x2: plotW, y1: y, y2: y, class: v === 0 ? "baseline-l" : "gridline" }));
+    const t = el("text", { x: -6, y: y + 3, "text-anchor": "end", class: "axis-label" });
+    t.textContent = Math.round(v);
+    g.appendChild(t);
+  }
+  const n = data.length, slot = plotW / n, barW = Math.min(40, slot * 0.6);
+  data.forEach((d, i) => {
+    const cx = slot * i + slot / 2;
+    const atRiskN = Math.round(d.n * d.at_risk_pct / 100);
+    const restN = d.n - atRiskN;
+    const totalH = (d.n / maxVal) * plotH;
+    const riskH = (atRiskN / maxVal) * plotH;
+    const restH = totalH - riskH;
+    const yTop = plotH - totalH;
+    const yRiskTop = plotH - riskH;
+    const rRest = el("rect", { x: cx - barW/2, y: plotH - restH, width: barW, height: Math.max(restH,0.5), fill: "var(--series-blue-2)", class: "bar", rx: 3 });
+    rRest.addEventListener("mousemove", (e)=>showTip(e, container, `<strong>${d.n.toLocaleString()}</strong> cases at Core = ${d.level}<br>${atRiskN.toLocaleString()} (${d.at_risk_pct}%) currently at risk`));
+    rRest.addEventListener("mouseleave", ()=>hideTip(container));
+    g.appendChild(rRest);
+    const rRisk = el("rect", { x: cx - barW/2, y: yTop, width: barW, height: Math.max(riskH,1), fill: "var(--status-critical)", rx: 3 });
+    rRisk.addEventListener("mousemove", (e)=>showTip(e, container, `<strong>${d.n.toLocaleString()}</strong> cases at Core = ${d.level}<br>${atRiskN.toLocaleString()} (${d.at_risk_pct}%) currently at risk`));
+    rRisk.addEventListener("mouseleave", ()=>hideTip(container));
+    g.appendChild(rRisk);
+
+    const vl = el("text", { x: cx, y: yTop - 6, "text-anchor": "middle", class: "bar-label" });
+    vl.textContent = d.at_risk_pct + "%";
+    g.appendChild(vl);
+
+    const cl = el("text", { x: cx, y: plotH + 15, "text-anchor": "middle", class: "cat-label" });
+    cl.textContent = d.level + " done";
+    g.appendChild(cl);
+  });
+}
+
+// ---- Horizontal ranked bar chart ----
+function hBarChart(containerId, data, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 440, rowH: 26, color: "var(--series-blue)", valueKey: "rate_pct", labelKey: "neighborhood", unit: "%", maxVal: null,
+    tipHtml: (d, val, unit) => `<strong>${val}${unit}</strong> reconveyed<br>${d.reconveyed} of ${d.total} closed cases` }, opts);
+  const h = data.length * o.rowH + 24;
+  const margin = { top: 4, right: 44, bottom: 20, left: 128 };
+  const plotW = o.w - margin.left - margin.right;
+  const maxVal = o.maxVal || Math.max(...data.map(d => d[o.valueKey])) * 1.12;
+  const svg = makeSvg(container, o.w, h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+  g.appendChild(el("line", { x1: 0, x2: 0, y1: 0, y2: data.length * o.rowH, class: "baseline-l" }));
+  data.forEach((d, i) => {
+    const y = i * o.rowH;
+    const val = d[o.valueKey];
+    const barW = (val / maxVal) * plotW;
+    const label = el("text", { x: -8, y: y + o.rowH / 2 + 4, "text-anchor": "end", class: "cat-label" });
+    label.textContent = d[o.labelKey];
+    g.appendChild(label);
+    const rect = el("rect", { x: 0, y: y + 4, width: Math.max(barW, 2), height: o.rowH - 10, rx: 3, fill: o.color, class: "bar" });
+    rect.addEventListener("mousemove", (e) => showTip(e, container, o.tipHtml(d, val, o.unit)));
+    rect.addEventListener("mouseleave", () => hideTip(container));
+    g.appendChild(rect);
+    const vl = el("text", { x: barW + 6, y: y + o.rowH / 2 + 4, class: "bar-label" });
+    vl.textContent = val + o.unit;
+    g.appendChild(vl);
+  });
+}
+
+// ---- Geo bubble map (real centroid coordinates, no boundary shapes) ----
+function geoBubbleMap(containerId, data, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 600, bbox: null, labelPos: {} }, opts);
+  const bbox = o.bbox;
+  const latMid = (bbox.lat0 + bbox.lat1) / 2;
+  const lonCorr = Math.cos(latMid * Math.PI / 180);
+  const lonSpanAdj = (bbox.lon1 - bbox.lon0) * lonCorr;
+  const latSpan = bbox.lat1 - bbox.lat0;
+  const aspect = lonSpanAdj / latSpan;
+  const margin = { top: 34, right: 24, bottom: 16, left: 24 };
+  const plotW = o.w - margin.left - margin.right;
+  const plotH = plotW / aspect;
+  const h = plotH + margin.top + margin.bottom;
+  const svg = makeSvg(container, o.w, h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+
+  const px = lon => (lon - bbox.lon0) / (bbox.lon1 - bbox.lon0) * plotW;
+  const py = lat => plotH - (lat - bbox.lat0) / (bbox.lat1 - bbox.lat0) * plotH;
+
+  g.appendChild(el("rect", { x: 0, y: 0, width: plotW, height: plotH, fill: "none", stroke: "var(--gridline)", "stroke-width": 1, "stroke-dasharray": "4 4", rx: 8 }));
+  const bboxLabel = el("text", { x: 4, y: plotH - 8, class: "axis-label" });
+  bboxLabel.textContent = "city extent (bounding box)";
+  g.appendChild(bboxLabel);
+
+  const ccx = plotW - 18, ccy = 8;
+  g.appendChild(el("line", { x1: ccx, y1: ccy + 14, x2: ccx, y2: ccy, stroke: "var(--ink-muted)", "stroke-width": 1.3 }));
+  g.appendChild(el("path", { d: `M ${ccx-3.5} ${ccy+4} L ${ccx} ${ccy-2} L ${ccx+3.5} ${ccy+4} Z`, fill: "var(--ink-muted)" }));
+  const nLabel = el("text", { x: ccx, y: ccy + 26, "text-anchor": "middle", class: "axis-label" });
+  nLabel.textContent = "N";
+  g.appendChild(nLabel);
+
+  const rates = data.map(d => d.rate_pct);
+  const minR = Math.min(...rates), maxR = Math.max(...rates);
+  const ns = data.map(d => d.n);
+  const minN = Math.min(...ns), maxN = Math.max(...ns);
+  const ramp = ["#cde2fb","#9ec5f4","#6da7ec","#3987e5","#1c5cab","#0d366b"];
+
+  data.forEach(d => {
+    const x = px(d.lon), y = py(d.lat);
+    const t = maxR > minR ? (d.rate_pct - minR) / (maxR - minR) : 0.5;
+    const step = Math.min(ramp.length - 1, Math.floor(t * ramp.length));
+    const color = ramp[step];
+    const rad = 11 + 15 * Math.sqrt((d.n - minN) / ((maxN - minN) || 1));
+    const circle = el("circle", { cx: x, cy: y, r: rad, fill: color, stroke: "var(--surface)", "stroke-width": 2, class: "bar" });
+    circle.addEventListener("mousemove", (e) => showTip(e, container, `<strong>District ${d.district}: ${d.rate_pct}%</strong> reconveyed<br>${d.reconveyed.toLocaleString()} of ${d.total.toLocaleString()} closed cases<br>${d.pct_black_2010}% Black (2010 census)`));
+    circle.addEventListener("mouseleave", () => hideTip(container));
+    g.appendChild(circle);
+
+    const pos = o.labelPos[d.district] || { dx: 0, dy: -rad - 14, anchor: "middle" };
+    const l1 = el("text", { x: x + pos.dx, y: y + pos.dy, "text-anchor": pos.anchor, class: "bar-label" });
+    l1.textContent = "D" + d.district;
+    g.appendChild(l1);
+    const l2 = el("text", { x: x + pos.dx, y: y + pos.dy + 12, "text-anchor": pos.anchor, class: "cat-label" });
+    l2.textContent = d.rate_pct + "%";
+    g.appendChild(l2);
+  });
+}
+
+// ---- Geography explorer (real Census tract / ZIP boundaries, via Leaflet) ----
+function interactiveGeoExplorer(rootId) {
+  const root = document.getElementById(rootId);
+  const mapContainer = root.querySelector(".geo-map-wrap");
+  const tableWrap = root.querySelector(".geo-table-wrap");
+  const table = tableWrap.querySelector("table");
+  const legendEl = root.querySelector(".legend");
+  const metricSelect = root.querySelector("select");
+  const geoButtons = [...root.querySelectorAll("[data-geo]")];
+  const viewButtons = [...root.querySelectorAll("[data-view]")];
+
+  const METRICS = {
+    reconveyance_rate_pct:     { label: "Reconveyance rate",          fmt: v => v.toFixed(1) + "%" },
+    closed_n:                  { label: "Closed cases",               fmt: v => Math.round(v).toLocaleString() },
+    at_risk_pct:               { label: "Share currently at risk",    fmt: v => v.toFixed(1) + "%" },
+    tax_delinquent_pct:        { label: "Tax delinquent",             fmt: v => v.toFixed(1) + "%" },
+    median_days_to_compliance: { label: "Median days to compliance",  fmt: v => Math.round(v).toLocaleString() + " d" },
+  };
+  // Same blue ramp used by the council-district map above — one color language for geography on this page.
+  const RAMP = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#1c5cab", "#0d366b"];
+  const NODATA_FILL = "#EDE9E2";
+  const NODATA_STROKE = "#D4CFC7";
+  const SMALL_N = 15;
+  const GEO_CFG = {
+    tract: { file: "geo/tracts.geojson", nameOf: p => "Tract " + p.tract_name },
+    zip:   { file: "geo/zips.geojson",   nameOf: p => "ZIP " + p.ZCTA5 },
+  };
+
+  const state = { geo: "tract", metric: "reconveyance_rate_pct", view: "map", data: {}, map: null, layer: null, lastFitGeo: null, sortKey: "value", sortDir: -1 };
+
+  Promise.all([
+    fetch(GEO_CFG.tract.file).then(r => r.json()),
+    fetch(GEO_CFG.zip.file).then(r => r.json()),
+  ]).then(([tractData, zipData]) => {
+    state.data.tract = tractData;
+    state.data.zip = zipData;
+    state.map = L.map(mapContainer, { attributionControl: false, scrollWheelZoom: false, zoomSnap: 0, zoomDelta: 0.5 });
+
+    // render() calls fitBounds() against the container's current pixel
+    // size. The map is created while #page-content is still hidden behind
+    // the password gate (0x0), so fitBounds computes an invalid view that
+    // invalidateSize() alone can't repair afterward -- render()/wire() must
+    // not run until the container has real dimensions. Proceed immediately
+    // if the gate is already open (returning visit this session); otherwise
+    // wait for it to open.
+    const pageContent = document.getElementById("page-content");
+    const startMap = () => { render(); wire(); };
+    if (!pageContent || pageContent.classList.contains("revealed")) {
+      startMap();
+    } else {
+      new MutationObserver((_, obs) => {
+        if (pageContent.classList.contains("revealed")) { obs.disconnect(); startMap(); }
+      }).observe(pageContent, { attributes: true, attributeFilter: ["class"] });
+    }
+  }).catch(err => {
+    mapContainer.innerHTML = '<p class="note" style="padding:16px">Map data failed to load.</p>';
+    console.error(err);
+  });
+
+  function cfg() { return GEO_CFG[state.geo]; }
+  function currentGeoJson() { return state.data[state.geo]; }
+
+  function quantileBreaks(values, bins) {
+    const sorted = values.slice().sort((a, b) => a - b);
+    const breaks = [];
+    for (let i = 1; i < bins; i++) breaks.push(sorted[Math.floor((i / bins) * (sorted.length - 1))]);
+    return breaks;
+  }
+  function colorFor(value, breaks) {
+    let i = 0;
+    while (i < breaks.length && value > breaks[i]) i++;
+    return RAMP[Math.min(i, RAMP.length - 1)];
+  }
+  function tipHtml(p) {
+    const name = cfg().nameOf(p);
+    if (p.total_n_nonNAP == null) return `<strong>${name}</strong><br>No DLBA cases in this dataset`;
+    const m = METRICS[state.metric];
+    const val = p[state.metric];
+    const small = p.total_n_nonNAP < SMALL_N ? ' <span style="opacity:.7">(small n)</span>' : "";
+    return `<strong>${name}</strong><br>${m.label}: ${val != null ? m.fmt(val) : "–"}${small}<br>n = ${p.total_n_nonNAP.toLocaleString()} cases`;
+  }
+
+  function render() {
+    const gj = currentGeoJson();
+    const values = gj.features.map(f => f.properties[state.metric]).filter(v => v != null);
+    const breaks = values.length ? quantileBreaks(values, RAMP.length) : [];
+
+    if (state.layer) state.layer.remove();
+    state.layer = L.geoJSON(gj, {
+      style: feature => {
+        const p = feature.properties;
+        const v = p[state.metric];
+        if (v == null || p.total_n_nonNAP == null) {
+          return { fillColor: NODATA_FILL, color: NODATA_STROKE, weight: 1, fillOpacity: 0.9 };
+        }
+        const small = p.total_n_nonNAP < SMALL_N;
+        return { fillColor: colorFor(v, breaks), color: "var(--tr-warm-white)", weight: 1, fillOpacity: small ? 0.45 : 0.88 };
+      },
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        layer.on("mouseover", e => {
+          layer.setStyle({ weight: 2.5, color: "var(--tr-charcoal)" });
+          layer.bringToFront();
+          showTip(e.originalEvent, mapContainer, tipHtml(p));
+        });
+        layer.on("mousemove", e => showTip(e.originalEvent, mapContainer, tipHtml(p)));
+        layer.on("mouseout", () => {
+          layer.setStyle({ weight: 1, color: "var(--tr-warm-white)" });
+          hideTip(mapContainer);
+        });
+      },
+    }).addTo(state.map);
+
+    if (state.lastFitGeo !== state.geo) {
+      state.map.fitBounds(state.layer.getBounds(), { padding: [16, 16] });
+      state.lastFitGeo = state.geo;
+    }
+    renderLegend(values, breaks);
+    if (state.view === "table") renderTable();
+  }
+
+  function renderLegend(values, breaks) {
+    if (!values.length) { legendEl.innerHTML = ""; return; }
+    const m = METRICS[state.metric];
+    const edges = [Math.min(...values), ...breaks, Math.max(...values)];
+    let html = RAMP.map((color, i) =>
+      `<div class="item"><span class="swatch" style="background:${color}"></span>${m.fmt(edges[i])}–${m.fmt(edges[i + 1])}</div>`
+    ).join("");
+    html += `<div class="item"><span class="swatch nodata"></span>No cases in dataset</div>`;
+    legendEl.innerHTML = html;
+  }
+
+  function renderTable() {
+    const gj = currentGeoJson();
+    const c = cfg();
+    const m = METRICS[state.metric];
+    let rows = gj.features
+      .map(f => ({ name: c.nameOf(f.properties), n: f.properties.total_n_nonNAP, value: f.properties[state.metric] }))
+      .filter(r => r.n != null);
+    rows.sort((a, b) => {
+      if (state.sortKey === "name") return state.sortDir * String(a.name).localeCompare(String(b.name));
+      const av = a[state.sortKey], bv = b[state.sortKey];
+      return state.sortDir * ((av == null ? -Infinity : av) - (bv == null ? -Infinity : bv));
+    });
+    const arrow = state.sortDir === -1 ? "▼" : "▲";
+    const hdr = (key, label, cls) => `<th data-sort="${key}" class="${cls || ""}">${label}${state.sortKey === key ? ' <span class="sort-arrow">' + arrow + "</span>" : ""}</th>`;
+    table.innerHTML =
+      `<thead><tr>${hdr("name", state.geo === "tract" ? "Tract" : "ZIP")}${hdr("n", "n", "num")}${hdr("value", m.label, "num")}</tr></thead>` +
+      `<tbody>${rows.map(r =>
+        `<tr${r.n < SMALL_N ? ' style="opacity:.6"' : ""}><td>${r.name}</td><td class="num mono">${r.n.toLocaleString()}</td><td class="num mono">${r.value != null ? m.fmt(r.value) : "–"}</td></tr>`
+      ).join("")}</tbody>`;
+  }
+
+  function wire() {
+    geoButtons.forEach(btn => btn.addEventListener("click", () => {
+      if (btn.dataset.geo === state.geo) return;
+      geoButtons.forEach(b => b.classList.toggle("active", b === btn));
+      state.geo = btn.dataset.geo;
+      render();
+    }));
+    metricSelect.addEventListener("change", () => {
+      state.metric = metricSelect.value;
+      render();
+    });
+    viewButtons.forEach(btn => btn.addEventListener("click", () => {
+      if (btn.dataset.view === state.view) return;
+      viewButtons.forEach(b => b.classList.toggle("active", b === btn));
+      state.view = btn.dataset.view;
+      if (state.view === "map") {
+        mapContainer.style.display = "";
+        tableWrap.hidden = true;
+        legendEl.style.display = "";
+        setTimeout(() => state.map.invalidateSize(), 0);
+      } else {
+        mapContainer.style.display = "none";
+        tableWrap.hidden = false;
+        legendEl.style.display = "none";
+        renderTable();
+      }
+    }));
+    table.addEventListener("click", e => {
+      const th = e.target.closest("th[data-sort]");
+      if (!th) return;
+      if (state.sortKey === th.dataset.sort) state.sortDir *= -1;
+      else { state.sortKey = th.dataset.sort; state.sortDir = -1; }
+      renderTable();
+    });
+  }
+}
+
+// ---- Diverging horizontal bar (correlation coefficients) ----
+function divergingHBarChart(containerId, data, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 460, rowH: 32, domain: 0.75 }, opts);
+  const plotH = data.length * o.rowH;
+  const margin = { top: 6, right: 46, bottom: 22, left: 150 };
+  const plotW = o.w - margin.left - margin.right;
+  const h = plotH + margin.top + margin.bottom;
+  const svg = makeSvg(container, o.w, h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+
+  const xScale = v => (v / o.domain) * (plotW / 2) + plotW / 2;
+  [-0.5, 0, 0.5].forEach(v => {
+    const x = xScale(v);
+    g.appendChild(el("line", { x1: x, x2: x, y1: 0, y2: plotH, class: v === 0 ? "baseline-l" : "gridline" }));
+    const t = el("text", { x, y: plotH + 15, "text-anchor": "middle", class: "axis-label" });
+    t.textContent = (v > 0 ? "+" : "") + v.toFixed(1);
+    g.appendChild(t);
+  });
+
+  data.forEach((d, i) => {
+    const y = i * o.rowH;
+    const x0 = xScale(0), x1 = xScale(d.r);
+    const barX = Math.min(x0, x1), barW = Math.abs(x1 - x0);
+    const color = d.r >= 0 ? "var(--series-blue)" : "var(--series-orange)";
+    const label = el("text", { x: -8, y: y + o.rowH / 2 + 4, "text-anchor": "end", class: "cat-label" });
+    label.textContent = d.label;
+    g.appendChild(label);
+    const rect = el("rect", { x: barX, y: y + 6, width: Math.max(barW, 2), height: o.rowH - 14, rx: 3, fill: color, class: "bar" });
+    rect.addEventListener("mousemove", (e) => showTip(e, container, `<strong>r = ${d.r.toFixed(2)}</strong><br>p = ${d.p.toFixed(2)} (n = 7 districts)<br>${d.p < 0.05 ? "statistically significant" : "not statistically significant"}`));
+    rect.addEventListener("mouseleave", () => hideTip(container));
+    g.appendChild(rect);
+    const vl = el("text", { x: x1 + (d.r >= 0 ? 6 : -6), y: y + o.rowH / 2 + 4, "text-anchor": d.r >= 0 ? "start" : "end", class: "bar-label" });
+    vl.textContent = (d.r >= 0 ? "+" : "") + d.r.toFixed(2);
+    g.appendChild(vl);
+  });
+}
+
+// ---- Stacked cohort volume chart ----
+function cohortStackChart(containerId, data, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 900, h: 280 }, opts);
+  const margin = { top: 18, right: 10, bottom: 30, left: 40 };
+  const plotW = o.w - margin.left - margin.right, plotH = o.h - margin.top - margin.bottom;
+  const maxVal = Math.max(...data.map(d => d.achieved + d.reconveyed + d.in_progress)) * 1.1;
+  const gridStep = niceStep(maxVal);
+  const svg = makeSvg(container, o.w, o.h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+  for (let v = 0; v <= maxVal; v += gridStep) {
+    const y = plotH - (v / maxVal) * plotH;
+    g.appendChild(el("line", { x1: 0, x2: plotW, y1: y, y2: y, class: v === 0 ? "baseline-l" : "gridline" }));
+    const t = el("text", { x: -6, y: y + 3, "text-anchor": "end", class: "axis-label" });
+    t.textContent = Math.round(v).toLocaleString();
+    g.appendChild(t);
+  }
+  const n = data.length, slot = plotW / n, barW = Math.min(46, slot * 0.68);
+  const colors = { achieved: "var(--series-aqua)", reconveyed: "var(--status-critical)", in_progress: "var(--ink-muted)" };
+  data.forEach((d, i) => {
+    const cx = slot * i + slot / 2;
+    let yCursor = plotH;
+    ["achieved","reconveyed","in_progress"].forEach(key => {
+      const val = d[key];
+      const segH = (val / maxVal) * plotH;
+      const y = yCursor - segH;
+      const rect = el("rect", { x: cx - barW/2, y, width: barW, height: Math.max(segH, val>0?0.5:0), fill: colors[key] });
+      rect.addEventListener("mousemove", (e)=>showTip(e, container, `<strong>${d.year}</strong><br>Achieved: ${d.achieved.toLocaleString()}<br>Reconveyed: ${d.reconveyed.toLocaleString()}<br>In progress: ${d.in_progress.toLocaleString()}`));
+      rect.addEventListener("mouseleave", ()=>hideTip(container));
+      g.appendChild(rect);
+      yCursor = y;
+    });
+    const cl = el("text", { x: cx, y: plotH + 14, "text-anchor": "middle", class: "cat-label" });
+    cl.textContent = "'" + String(d.year).slice(2);
+    g.appendChild(cl);
+  });
+}
+
+// ---- Cohort rate chart with recency fade ----
+function cohortRateChart(containerId, data, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 900, h: 230 }, opts);
+  const margin = { top: 18, right: 10, bottom: 30, left: 34 };
+  const plotW = o.w - margin.left - margin.right, plotH = o.h - margin.top - margin.bottom;
+  const maxVal = Math.max(...data.map(d => d.rate_pct || 0)) * 1.2;
+  const gridStep = niceStep(maxVal);
+  const svg = makeSvg(container, o.w, o.h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+  for (let v = 0; v <= maxVal; v += gridStep) {
+    const y = plotH - (v / maxVal) * plotH;
+    g.appendChild(el("line", { x1: 0, x2: plotW, y1: y, y2: y, class: v === 0 ? "baseline-l" : "gridline" }));
+    const t = el("text", { x: -6, y: y + 3, "text-anchor": "end", class: "axis-label" });
+    t.textContent = Math.round(v) + "%";
+    g.appendChild(t);
+  }
+  const n = data.length, slot = plotW / n, barW = Math.min(46, slot * 0.68);
+  data.forEach((d, i) => {
+    const cx = slot * i + slot / 2;
+    const val = d.rate_pct || 0;
+    const barH = (val / maxVal) * plotH;
+    const y = plotH - barH;
+    const unresolved = d.pct_still_unresolved || 0;
+    const opacity = unresolved > 15 ? Math.max(0.28, 1 - unresolved/100*1.3) : 1;
+    const rect = el("rect", { x: cx - barW/2, y, width: barW, height: Math.max(barH,1), rx: 3, fill: "var(--status-critical)", opacity: opacity, class:"bar" });
+    rect.addEventListener("mousemove", (e)=>showTip(e, container, `<strong>${d.year}: ${val}%</strong> of closed cases reconveyed<br>${unresolved}% of this cohort still unresolved`));
+    rect.addEventListener("mouseleave", ()=>hideTip(container));
+    g.appendChild(rect);
+    const vl = el("text", { x: cx, y: y - 6, "text-anchor": "middle", class: "bar-label", opacity: Math.max(opacity, 0.55) });
+    vl.textContent = val + "%";
+    g.appendChild(vl);
+    const cl = el("text", { x: cx, y: plotH + 14, "text-anchor": "middle", class: "cat-label" });
+    cl.textContent = "'" + String(d.year).slice(2);
+    g.appendChild(cl);
+  });
+}
+
+// ---- Range/box row for delinquency distribution ----
+function rangeRowChart(containerId, stats, opts) {
+  const container = document.getElementById(containerId);
+  const o = Object.assign({ w: 720, h: 150, unit: " days" }, opts);
+  const margin = { top: 34, right: 50, bottom: 40, left: 50 };
+  const plotW = o.w - margin.left - margin.right;
+  const maxVal = stats.max * 1.05;
+  const svg = makeSvg(container, o.w, o.h);
+  const g = el("g", { transform: `translate(${margin.left},${margin.top})` });
+  svg.appendChild(g);
+  const sx = v => (v / maxVal) * plotW;
+  const midY = 30;
+  [0, 1000, 2000, 3000, 4000].forEach(v => {
+    if (v > maxVal) return;
+    if (Math.abs(sx(v) - sx(stats.p90)) < 28) return;
+    const x = sx(v);
+    g.appendChild(el("line", { x1: x, x2: x, y1: 0, y2: 60, class: "gridline" }));
+    const t = el("text", { x, y: 78, "text-anchor": "middle", class: "axis-label" });
+    t.textContent = v.toLocaleString();
+    g.appendChild(t);
+  });
+  g.appendChild(el("line", { x1: sx(stats.min), x2: sx(stats.max), y1: midY, y2: midY, stroke: "var(--baseline)", "stroke-width": 2 }));
+  g.appendChild(el("rect", { x: sx(stats.p25), y: midY - 14, width: sx(stats.p75) - sx(stats.p25), height: 28, fill: "var(--series-blue-2)", stroke: "var(--series-blue)", "stroke-width": 1.5, rx: 3 }));
+  g.appendChild(el("line", { x1: sx(stats.median), x2: sx(stats.median), y1: midY - 14, y2: midY + 14, stroke: "var(--status-critical)", "stroke-width": 3 }));
+  g.appendChild(el("line", { x1: sx(stats.p90), x2: sx(stats.p90), y1: midY - 20, y2: midY + 20, stroke: "var(--ink)", "stroke-width": 1.5, "stroke-dasharray": "3,2" }));
+
+  const labelDefs = [
+    { v: stats.min, txt: "min\n" + Math.round(stats.min), y: midY + 40 },
+    { v: stats.median, txt: "median\n" + Math.round(stats.median) + " (" + (stats.median/365).toFixed(1) + "y)", y: midY - 26, above: true },
+    { v: stats.p90, txt: "p90\n" + Math.round(stats.p90), y: midY + 40 },
+    { v: stats.max, txt: "max\n" + Math.round(stats.max), y: midY - 26, above: true },
+  ];
+  labelDefs.forEach(ld => {
+    const lines = ld.txt.split("\n");
+    lines.forEach((ln, li) => {
+      const t = el("text", { x: sx(ld.v), y: ld.y + li*11, "text-anchor": "middle", class: li===0 ? "cat-label" : "bar-label" });
+      t.textContent = ln;
+      g.appendChild(t);
+    });
+  });
+}
+
+// ================= DATA =================
+const D = {
+  "reconciliation": {
+    "total_ever_sold": { "brief": 18000, "data": 18563 },
+    "at_risk_now": { "brief": 1000, "data": 1035 },
+    "currently_monitored": { "brief": 4500, "data": 3497 }
+  },
+  "failure_rate": { "cited_pct": 14.0, "of_all_ever_sold_pct": 17.0, "of_closed_only_pct": 21.0, "of_all_ever_sold_incl_nap_pct": 14.6, "of_closed_only_incl_nap_pct": 18.0 },
+  "channel": {
+    "Own It Now": { "achieved": 7962, "reconveyed": 2533, "reconveyance_rate_pct": 24.1, "median_days_to_compliance": 658.0, "p90_days_to_compliance": 1457.0 },
+    "Auction": { "achieved": 3651, "reconveyed": 611, "reconveyance_rate_pct": 14.3, "median_days_to_compliance": 561.0, "p90_days_to_compliance": 1321.0 },
+    "NAP": { "achieved": 2510, "reconveyed": 0, "reconveyance_rate_pct": 0.0, "median_days_to_compliance": 349.0, "p90_days_to_compliance": 943.0 }
+  },
+  "core_items": [
+    { "level": 0, "n": 1059, "at_risk_pct": 27.7, "median_days_open": 404.0 },
+    { "level": 1, "n": 549, "at_risk_pct": 27.1, "median_days_open": 571.0 },
+    { "level": 2, "n": 377, "at_risk_pct": 21.5, "median_days_open": 735.0 },
+    { "level": 3, "n": 384, "at_risk_pct": 28.1, "median_days_open": 860.0 },
+    { "level": 4, "n": 572, "at_risk_pct": 28.8, "median_days_open": 1067.0 },
+    { "level": 5, "n": 1083, "at_risk_pct": 40.5, "median_days_open": 1538.0 }
+  ],
+  "core5_missing_items": {
+    "Furnace Installed": 0.0, "Water Heater Installed": 0.0, "Kitchen Counter/Sink/Cooking Elem": 0.0,
+    "Bathroom Toilet/Sink": 0.0, "Water Bill": 46.8, "DTE Electric Bill": 51.2, "DTE Gas Bill": 56.1,
+    "BSEED Inspection": 0.0, "NO BOARDS": 74.2
+  },
+  "risk_signals": [
+    { "status": "Compliance (Sales)", "n": 2383, "tax_delinq_pct": 43.9, "foreclosure_pct": 0.7 },
+    { "status": "Compliance (NAP)", "n": 324, "tax_delinq_pct": 67.0, "foreclosure_pct": 3.4 },
+    { "status": "Compliance Closeout Review", "n": 82, "tax_delinq_pct": 50.0, "foreclosure_pct": 1.2 },
+    { "status": "Court Action Recommended", "n": 200, "tax_delinq_pct": 54.0, "foreclosure_pct": 10.0 },
+    { "status": "Potential Reconveyance", "n": 933, "tax_delinq_pct": 77.4, "foreclosure_pct": 8.8 },
+    { "status": "Reconveyance In Process", "n": 102, "tax_delinq_pct": 77.5, "foreclosure_pct": 17.6 }
+  ],
+  "structure_type": [
+    { "structure": "Single Family", "achieved": 8669, "reconveyed": 2196, "rate_pct": 20.2 },
+    { "structure": "Multi-unit", "achieved": 1631, "reconveyed": 671, "rate_pct": 29.1 }
+  ],
+  "neighborhood_top10": [
+    { "neighborhood": "Poletown East", "achieved": 24, "reconveyed": 17, "total": 41, "rate_pct": 41.5 },
+    { "neighborhood": "Gratiot Town/Kettering", "achieved": 66, "reconveyed": 45, "total": 111, "rate_pct": 40.5 },
+    { "neighborhood": "Ravendale", "achieved": 26, "reconveyed": 17, "total": 43, "rate_pct": 39.5 },
+    { "neighborhood": "West End", "achieved": 140, "reconveyed": 76, "total": 216, "rate_pct": 35.2 },
+    { "neighborhood": "East Village", "achieved": 64, "reconveyed": 34, "total": 98, "rate_pct": 34.7 },
+    { "neighborhood": "Gratiot-Findlay", "achieved": 134, "reconveyed": 71, "total": 205, "rate_pct": 34.6 },
+    { "neighborhood": "Fox Creek", "achieved": 49, "reconveyed": 25, "total": 74, "rate_pct": 33.8 },
+    { "neighborhood": "Jamison", "achieved": 100, "reconveyed": 50, "total": 150, "rate_pct": 33.3 },
+    { "neighborhood": "Islandview", "achieved": 42, "reconveyed": 21, "total": 63, "rate_pct": 33.3 },
+    { "neighborhood": "Franklin", "achieved": 144, "reconveyed": 70, "total": 214, "rate_pct": 32.7 }
+  ],
+  "neighborhood_bottom10": [
+    { "neighborhood": "Buffalo Charles", "achieved": 61, "reconveyed": 1, "total": 62, "rate_pct": 1.6 },
+    { "neighborhood": "Garden Homes", "achieved": 54, "reconveyed": 2, "total": 56, "rate_pct": 3.6 },
+    { "neighborhood": "Schulze", "achieved": 51, "reconveyed": 2, "total": 53, "rate_pct": 3.8 },
+    { "neighborhood": "East English Village", "achieved": 78, "reconveyed": 4, "total": 82, "rate_pct": 4.9 },
+    { "neighborhood": "Crary/St Marys", "achieved": 91, "reconveyed": 5, "total": 96, "rate_pct": 5.2 },
+    { "neighborhood": "Springwells", "achieved": 65, "reconveyed": 4, "total": 69, "rate_pct": 5.8 },
+    { "neighborhood": "Central Southwest", "achieved": 53, "reconveyed": 4, "total": 57, "rate_pct": 7.0 },
+    { "neighborhood": "Westwood Park", "achieved": 46, "reconveyed": 4, "total": 50, "rate_pct": 8.0 },
+    { "neighborhood": "Evergreen-Outer Drive", "achieved": 52, "reconveyed": 5, "total": 57, "rate_pct": 8.8 },
+    { "neighborhood": "Boynton", "achieved": 123, "reconveyed": 12, "total": 135, "rate_pct": 8.9 }
+  ],
+  "neighborhood_n_qualifying": 100,
+  "neighborhood_citywide_rate": 21.0,
+  "council_district": [
+    { "district": 1, "achieved": 1292, "reconveyed": 277, "total": 1569, "rate_pct": 17.7 },
+    { "district": 2, "achieved": 932, "reconveyed": 174, "total": 1106, "rate_pct": 15.7 },
+    { "district": 3, "achieved": 2670, "reconveyed": 750, "total": 3420, "rate_pct": 21.9 },
+    { "district": 4, "achieved": 2123, "reconveyed": 734, "total": 2857, "rate_pct": 25.7 },
+    { "district": 5, "achieved": 1618, "reconveyed": 621, "total": 2239, "rate_pct": 27.7 },
+    { "district": 6, "achieved": 1261, "reconveyed": 185, "total": 1446, "rate_pct": 12.8 },
+    { "district": 7, "achieved": 2002, "reconveyed": 422, "total": 2424, "rate_pct": 17.4 }
+  ],
+  "cohort_year": [
+    { "year": 2014, "achieved": 136, "reconveyed": 17, "in_progress": 0, "closed_total": 153, "rate_pct": 11.1, "pct_still_unresolved": 0.0 },
+    { "year": 2015, "achieved": 452, "reconveyed": 62, "in_progress": 0, "closed_total": 514, "rate_pct": 12.1, "pct_still_unresolved": 0.0 },
+    { "year": 2016, "achieved": 673, "reconveyed": 139, "in_progress": 5, "closed_total": 812, "rate_pct": 17.1, "pct_still_unresolved": 0.6 },
+    { "year": 2017, "achieved": 1185, "reconveyed": 251, "in_progress": 16, "closed_total": 1436, "rate_pct": 17.5, "pct_still_unresolved": 1.1 },
+    { "year": 2018, "achieved": 1190, "reconveyed": 189, "in_progress": 21, "closed_total": 1379, "rate_pct": 13.7, "pct_still_unresolved": 1.5 },
+    { "year": 2019, "achieved": 1675, "reconveyed": 369, "in_progress": 59, "closed_total": 2044, "rate_pct": 18.1, "pct_still_unresolved": 2.8 },
+    { "year": 2020, "achieved": 2062, "reconveyed": 725, "in_progress": 237, "closed_total": 2787, "rate_pct": 26.0, "pct_still_unresolved": 7.8 },
+    { "year": 2021, "achieved": 1654, "reconveyed": 800, "in_progress": 330, "closed_total": 2454, "rate_pct": 32.6, "pct_still_unresolved": 11.9 },
+    { "year": 2022, "achieved": 1083, "reconveyed": 394, "in_progress": 330, "closed_total": 1477, "rate_pct": 26.7, "pct_still_unresolved": 18.3 },
+    { "year": 2023, "achieved": 734, "reconveyed": 137, "in_progress": 496, "closed_total": 871, "rate_pct": 15.7, "pct_still_unresolved": 36.3 },
+    { "year": 2024, "achieved": 675, "reconveyed": 54, "in_progress": 689, "closed_total": 729, "rate_pct": 7.4, "pct_still_unresolved": 48.6 },
+    { "year": 2025, "achieved": 336, "reconveyed": 24, "in_progress": 854, "closed_total": 360, "rate_pct": 6.7, "pct_still_unresolved": 70.3 },
+    { "year": 2026, "achieved": 17, "reconveyed": 2, "in_progress": 460, "closed_total": 19, "rate_pct": 10.5, "pct_still_unresolved": 96.0 }
+  ],
+  "days_delinquent_reconveyed": { "min": 65.0, "p25": 1437.0, "median": 1770.0, "p75": 2110.0, "p90": 2794.0, "max": 4379.0, "n": 2954 },
+  "price_quintiles": [
+    { "range": "(-0.001, 1000.0]", "n": 4065, "rate_pct": 26.9 },
+    { "range": "(1000.0, 1440.0]", "n": 1962, "rate_pct": 27.1 },
+    { "range": "(1440.0, 2800.0]", "n": 3013, "rate_pct": 24.4 },
+    { "range": "(2800.0, 6600.0]", "n": 3032, "rate_pct": 15.6 },
+    { "range": "(6600.0, 250000.0]", "n": 2992, "rate_pct": 11.0 }
+  ],
+  "floorarea_quintiles": [
+    { "range": "(-0.001, 882.8]", "n": 2759, "rate_pct": 19.4 },
+    { "range": "(882.8, 1049.0]", "n": 2760, "rate_pct": 17.4 },
+    { "range": "(1049.0, 1282.0]", "n": 2759, "rate_pct": 19.4 },
+    { "range": "(1282.0, 1622.0]", "n": 2763, "rate_pct": 21.8 },
+    { "range": "(1622.0, 8104.0]", "n": 2754, "rate_pct": 27.1 }
+  ],
+  "buyer_id_gap": { "n_records": 11903, "n_unique_buyer_ids": 11760 },
+};
+
+// ---- Chart 2: failure rate ----
+vBarChart("chart-failure-rate", [
+  { label: "Cited in\npartnership brief", rate: D.failure_rate.cited_pct, color: "var(--ink-muted)" },
+  { label: "Ever sold,\nexcl. NAP", rate: D.failure_rate.of_all_ever_sold_pct, color: "var(--series-orange)" },
+  { label: "Ever sold,\nincl. NAP", rate: D.failure_rate.of_all_ever_sold_incl_nap_pct, color: "var(--series-orange)", opacity: 0.4 },
+  { label: "Closed,\nexcl. NAP", rate: D.failure_rate.of_closed_only_pct, color: "var(--status-critical)" },
+  { label: "Closed,\nincl. NAP", rate: D.failure_rate.of_closed_only_incl_nap_pct, color: "var(--status-critical)", opacity: 0.4 },
+], { w: 640, h: 240, maxVal: 26, gridStep: 5 });
+
+// ---- Chart 3a: channel rate ----
+vBarChart("chart-channel-rate", [
+  { label: "Own It Now", rate: D.channel["Own It Now"].reconveyance_rate_pct, color: "var(--series-blue)" },
+  { label: "Auction", rate: D.channel["Auction"].reconveyance_rate_pct, color: "var(--series-orange)" },
+], { w: 400, h: 230, maxVal: 30, gridStep: 10,
+  tipHtml: (d) => `<strong>${d.rate}%</strong> reconveyed` });
+
+// ---- Chart 3b: channel timeline ----
+groupedBarChart("chart-channel-timeline", [
+  { label: "Own It\nNow", median: D.channel["Own It Now"].median_days_to_compliance, p90: D.channel["Own It Now"].p90_days_to_compliance },
+  { label: "Auction", median: D.channel["Auction"].median_days_to_compliance, p90: D.channel["Auction"].p90_days_to_compliance },
+  { label: "NAP", median: D.channel["NAP"].median_days_to_compliance, p90: D.channel["NAP"].p90_days_to_compliance },
+], [
+  { key: "median", color: "var(--series-blue)", label: "Median" },
+  { key: "p90", color: "var(--series-blue-2)", label: "90th pct" },
+], { w: 400, h: 230, unit: "d", maxVal: 1600 });
+
+// ---- Chart 4a: core risk stacked ----
+stackedRiskChart("chart-core-risk", D.core_items, { w: 330, h: 230 });
+
+// ---- Chart 4b: core days ----
+vBarChart("chart-core-days", D.core_items.map(d => ({ label: d.level + " done", rate: d.median_days_open, color: "var(--series-blue)" })),
+  { w: 330, h: 230, unit: "", valueFmt: v => Math.round(v).toLocaleString(), maxVal: 1700, gridStep: 500 });
+
+// ---- Chart 4c: core5 missing ----
+(function(){
+  const items = [
+    { label: "NO BOARDS", pct: D.core5_missing_items["NO BOARDS"] },
+    { label: "DTE Gas Bill", pct: D.core5_missing_items["DTE Gas Bill"] },
+    { label: "DTE Electric Bill", pct: D.core5_missing_items["DTE Electric Bill"] },
+    { label: "Water Bill", pct: D.core5_missing_items["Water Bill"] },
+  ];
+  hBarChart("chart-core-missing", items, { w: 330, rowH: 30, color: "var(--status-warning)", labelKey: "label", valueKey: "pct", maxVal: 100,
+    tipHtml: (d, val) => `<strong>${val}%</strong> of core-complete cases<br>still missing ${d.label}` });
+})();
+
+// ---- Chart 5: risk signals grouped ----
+const STATUS_LABELS = {
+  "Compliance (Sales)": "Compliance\n(Sales)",
+  "Compliance (NAP)": "Compliance\n(NAP)",
+  "Compliance Closeout Review": "Closeout\nReview",
+  "Court Action Recommended": "Court Action\nRecommended",
+  "Potential Reconveyance": "Potential\nReconveyance",
+  "Reconveyance In Process": "Reconveyance\nIn Process",
+};
+groupedBarChart("chart-risk-signals", D.risk_signals.map(s => ({ label: STATUS_LABELS[s.status] || s.status, tax: s.tax_delinq_pct, fore: s.foreclosure_pct })),
+  [ { key: "tax", color: "var(--series-blue)", label: "Tax delinquent" }, { key: "fore", color: "var(--series-yellow)", label: "Foreclosure flag" } ],
+  { w: 760, h: 250, unit: "%", maxVal: 90 });
+
+// ---- Chart 6: structure type ----
+vBarChart("chart-structure", D.structure_type.map(s => ({ label: s.structure.replace(" ","\n"), rate: s.rate_pct, color: s.structure === "Multi-unit" ? "var(--status-critical)" : "var(--series-blue)" })),
+  { w: 380, h: 220, maxVal: 34, gridStep: 10 });
+
+// ---- Chart 7: neighborhoods ----
+hBarChart("chart-neigh-top", D.neighborhood_top10, { w: 420, rowH: 25, color: "var(--status-critical)", maxVal: 45 });
+hBarChart("chart-neigh-bottom", D.neighborhood_bottom10, { w: 420, rowH: 25, color: "var(--status-good)", maxVal: 45 });
+interactiveGeoExplorer("geoExplorer");
+
+// ---- Chart 8: cohort ----
+cohortStackChart("chart-cohort-stack", D.cohort_year, { w: 1060, h: 270 });
+cohortRateChart("chart-cohort-rate", D.cohort_year, { w: 1060, h: 220 });
+
+// ---- Chart 9: delinquency range ----
+rangeRowChart("chart-delinq-range", D.days_delinquent_reconveyed, { w: 720, h: 150 });
+
+// ---- Chart 10: price + floor area ----
+vBarChart("chart-price", D.price_quintiles.map((d,i) => ({ label: priceLabel(i), rate: d.rate_pct, color: "var(--series-blue)" })),
+  { w: 400, h: 230, maxVal: 30, gridStep: 10, tipHtml: (d)=>`<strong>${d.rate}%</strong> reconveyed` });
+vBarChart("chart-sqft", D.floorarea_quintiles.map((d,i) => ({ label: sqftLabel(i), rate: d.rate_pct, color: "var(--series-orange)" })),
+  { w: 400, h: 230, maxVal: 30, gridStep: 10, tipHtml: (d)=>`<strong>${d.rate}%</strong> reconveyed` });
+
+function priceLabel(i){ return ["$0–\n$1,000","$1,000–\n$1,440","$1,440–\n$2,800","$2,800–\n$6,600","$6,600+"][i]; }
+function sqftLabel(i){ return ["< 883\nsq ft","883–\n1,049","1,049–\n1,282","1,282–\n1,622","1,622+\nsq ft"][i]; }
+
+// ---- TOC ----
+(function(){
+  const items = [
+    ["s2","Failure rate"],["s3","Channel divide"],["s4","Core items stuck"],
+    ["s5","Early warnings"],["s6","Structure type"],["s7","Geography"],["s8","Cohort trend"],
+    ["s9","Delinquency"],["s10","Price & sq ft"],["s11","Limitations"],
+  ];
+  document.getElementById("tocLinks").innerHTML = items.map(([id,label]) => `<a href="#${id}">${label}</a>`).join("");
+})();
+</script>
+
+</body>
+</html>
