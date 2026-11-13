@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) settings.
+# Keep the source copy doc and build script out of the published site.
+exclude:
+  - content
+  - scripts

@@ -606,6 +606,7 @@ hr.rule {
   margin-bottom: 8px;
 }
 .projects-row-headline {
+  white-space: nowrap;
   font-family: 'geomanistmedium', sans-serif;
   font-size: 22px;
   letter-spacing: -0.02em;
