@@ -209,6 +209,43 @@ def visual_timeline(items, start, now=2026):
 </div>'''
 
 
+def visual_imposition(items):
+    """Zine imposition: bullets 1-2 are labels; the rest are sheet rows of page numbers.
+    The first row prints upside down; the cut runs across the middle panels."""
+    if len(items) < 3:
+        return ""
+    write_label, print_label, rows = items[0], items[1], [r.split() for r in items[2:]]
+    pages = sorted({int(n) for r in rows for n in r if n.isdigit()})
+    cols = max(len(r) for r in rows)
+
+    def mini(n, cls=""):
+        cover = " is-cover" if n == 1 else ""
+        return f'<span class="vimp-page{cover}{cls}"><b>{n}</b><i></i><i></i><i></i></span>'
+
+    reading = "".join(f"<li>{mini(n)}</li>" for n in pages)
+    sheet = "".join(
+        "".join(mini(int(n), " is-flipped" if ri == 0 and len(rows) > 1 else "") for n in r)
+        for ri, r in enumerate(rows)
+    )
+    return f'''<div class="vimp" style="--cols:{cols};--rows:{len(rows)}">
+  <div class="vimp-step">
+    <p class="vimp-label"><span>1</span>{inline(write_label)}</p>
+    <ol class="vimp-pages">{reading}</ol>
+  </div>
+  <div class="vimp-arrow" aria-hidden="true">→</div>
+  <div class="vimp-step">
+    <p class="vimp-label"><span>2</span>{inline(print_label)}</p>
+    <div class="vimp-sheet" role="img" aria-label="Pages arranged on one sheet: {html.escape(" / ".join(" ".join(r) for r in rows))}">
+      {sheet}
+      {"".join(f'<span class="vimp-fold is-v" style="left:{c / cols * 100:.2f}%" aria-hidden="true"></span>' for c in range(1, cols))}
+      {"".join(f'<span class="vimp-fold is-h" style="top:{r / len(rows) * 100:.2f}%" aria-hidden="true"></span>' for r in range(1, len(rows)))}
+      <span class="vimp-cut" aria-hidden="true"><em>✂</em></span>
+    </div>
+    <p class="vimp-legend" aria-hidden="true"><span class="is-fold">fold</span><span class="is-cut">cut</span><span class="is-flip">prints upside down</span></p>
+  </div>
+</div>'''
+
+
 def visual_screenshot(p, domain):
     img = p["meta"].get("image", "")
     if img and (ROOT / img).exists():
@@ -237,8 +274,10 @@ def render_visual(p, domain):
         return visual_timeline(items, int(p["meta"].get("timeline_start", "1789")))
     if kind == "screenshot":
         return visual_screenshot(p, domain)
+    if kind == "imposition":
+        return visual_imposition(items)
     if kind:
-        warn(f"{p['name']}: unknown visual '{kind}' (use loop, tree, timeline or screenshot)")
+        warn(f"{p['name']}: unknown visual '{kind}' (use loop, tree, timeline, imposition or screenshot)")
     return ""
 
 

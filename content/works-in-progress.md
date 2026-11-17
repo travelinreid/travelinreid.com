@@ -299,3 +299,53 @@ Years from the first Congress to each first. Sample milestones shown; the full p
 ## Before you go
 
 Don't miss the interactive map showing all the "never-been" data across the country.
+
+# Samizdat
+
+slug: samizdat
+pill: Samizdat
+url: https://samizdat.travelinreid.com
+status: Mac alpha
+role: Product Owner
+started: 2026
+built_with: Codex/ChatGPT, Electron, React, TypeScript
+visual: imposition
+
+## Summary
+
+A private, local-first desktop studio for making zines. You write ordinary pages; Samizdat does the folding math.
+
+## What it is
+
+Samizdat is a desktop app for making zines, the little publications you print on a single sheet of paper, then cut, fold and pass along.
+You design upright pages in reading order. Samizdat works out where each page lands on the sheet, which ones print upside down, and where to cut and fold, so what comes out of the printer folds into a finished zine.
+It handles Letter, Legal, Tabloid and A-series paper, text, images and shapes, and a growing set of templates beyond the classic eight-pager. Everything runs on your own computer: no account, no uploads, no cloud.
+
+## Why I work on it
+
+I want to make zines, all kinds of them: little physical stories and ideas to cast out into our community. And I want the tools of creation never to get in the way of the act of creation.
+The zine makers I found were web-based and stopped at one or two templates. I have a printer in the basement that takes all kinds of paper, and a lot of things to say. Maybe.
+It's also a small argument I keep making in my day job: publishing doesn't have to begin with a platform. Sometimes it begins with one person making a thing for another.
+
+## What's different
+
+- **It does the folding math.** Write pages in order. Samizdat arranges them on the sheet, flips the ones that print upside down, and marks every cut and fold.
+- **More than the eight-pager.** Alongside the classic one-sheet zine are a five-page poster fold, a sixteen-page window fold, and more formats in the lab.
+- **Private by default.** Projects and images stay on your machine. No account, no uploads, no password to remember.
+- **A real studio.** Linked text that flows across pages, images that span a spread, a folded preview, print checks and print-ready PDFs.
+
+## Visual
+
+<!-- imposition: bullet 1 = left label, bullet 2 = right label, then one bullet per row of the printed sheet. The first row prints upside down. -->
+- You write pages in order
+- Samizdat prints them on one sheet
+- 5 4 3 2
+- 6 7 8 1
+
+## Caption
+
+The classic eight-page zine. Pages 1–8 land on one sheet, top row upside down; cut the slit across the middle, fold, and the pages fall into order.
+
+## Before you go
+
+The Mac alpha is open to testers. Email me from the Samizdat page to get a copy.

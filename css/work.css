@@ -270,6 +270,66 @@ mark.todo {
 .vtl-axis span:first-child { transform: none; }
 .vtl-axis span:last-child { transform: translateX(-100%); }
 
+/* Imposition diagram (zine page order → printed sheet) */
+.vimp {
+  display: grid; grid-template-columns: minmax(0, 0.9fr) auto minmax(0, 1.25fr);
+  gap: 32px; align-items: center;
+  padding: 44px 48px 40px;
+}
+.vimp-label {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans-medium); font-size: 13px; color: var(--tr-charcoal);
+  margin-bottom: 18px;
+}
+.vimp-label span {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--tr-blue); color: #fff; font-size: 11px; line-height: 22px; text-align: center;
+}
+.vimp-pages { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.vimp-arrow { font-family: var(--font-sans); font-size: 28px; color: var(--tr-blue-mid); padding-top: 28px; }
+.vimp-page {
+  position: relative; display: flex; flex-direction: column; gap: 5px;
+  aspect-ratio: 2.75 / 4.25; /* one panel of a landscape Letter sheet */
+  background: #fff; border: 1px solid var(--tr-rule);
+  padding: 22% 14% 0;
+}
+.vimp-page b {
+  position: absolute; left: 0; right: 0; bottom: 6%; text-align: center;
+  font-family: var(--font-sans-medium); font-weight: normal; font-size: 13px; color: var(--tr-charcoal);
+}
+.vimp-page i { display: block; height: 4px; background: var(--tr-warm-white-2); border-radius: 1px; }
+.vimp-page i:nth-of-type(2) { width: 80%; }
+.vimp-page i:nth-of-type(3) { width: 60%; }
+.vimp-page.is-cover { background: var(--tr-rust); border-color: var(--tr-rust); }
+.vimp-page.is-cover b { color: #fff; }
+.vimp-page.is-cover i { background: rgba(255,255,255,0.35); }
+.vimp-sheet {
+  position: relative;
+  display: grid; grid-template-columns: repeat(var(--cols), 1fr);
+  background: #fff;
+  border: 1px solid var(--tr-charcoal-dim);
+  box-shadow: 0 10px 24px -14px rgba(44,44,40,0.35);
+}
+.vimp-sheet .vimp-page { border: 0; }
+.vimp-fold { position: absolute; pointer-events: none; }
+.vimp-fold.is-v { top: 0; bottom: 0; border-left: 1px dashed rgba(44,44,40,0.28); }
+.vimp-fold.is-h { left: 0; right: 0; border-top: 1px dashed rgba(44,44,40,0.28); }
+.vimp-page.is-flipped { transform: rotate(180deg); }
+.vimp-cut {
+  position: absolute; top: 50%; left: 25%; right: 25%;
+  border-top: 2px dashed var(--tr-rust); transform: translateY(-1px);
+}
+.vimp-cut em {
+  position: absolute; left: -12px; top: -11px;
+  font-style: normal; font-size: 16px; line-height: 1; color: var(--tr-rust);
+  background: #fff; padding: 0 2px;
+}
+.vimp-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; font-family: var(--font-sans); font-size: 12px; color: var(--tr-charcoal-dim); }
+.vimp-legend span::before { content: ""; display: inline-block; vertical-align: middle; margin-right: 7px; }
+.vimp-legend .is-fold::before { width: 18px; border-top: 1px dashed var(--tr-charcoal-dim); }
+.vimp-legend .is-cut::before { width: 18px; border-top: 2px dashed var(--tr-rust); }
+.vimp-legend .is-flip::before { content: "↻"; font-size: 13px; color: var(--tr-blue-mid); }
+
 /* Screenshot frame */
 .vshot { overflow: hidden; border: 1px solid var(--tr-rule); background: #fff !important; }
 .vshot-bar {
@@ -431,6 +491,8 @@ mark.todo {
   .vloop-node + .vloop-node::before { content: "↓"; position: absolute; top: -15px; left: 22px; font-size: 12px; color: var(--tr-blue-mid); }
   .vloop-nodes::after { content: "↺ and back to 1"; font-family: var(--font-sans); font-size: 12px; color: var(--tr-blue-mid); padding-left: 12px; }
   .vtl-row { grid-template-columns: 52px minmax(0, 1fr); row-gap: 4px; }
+  .vimp { grid-template-columns: 1fr; gap: 20px; padding: 28px 24px; }
+  .vimp-arrow { transform: rotate(90deg); padding: 0; justify-self: center; }
   .vtl-label { grid-column: 2; }
   .vtl-axis { margin-left: 70px; margin-right: 0; }
   .vtl-axis span:nth-last-child(2) { display: none; }
