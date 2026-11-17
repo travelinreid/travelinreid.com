@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 86">
+  <defs>
+    <pattern id="ticks" x="30" y="3" width="70" height="35" patternUnits="userSpaceOnUse">
+      <path d="M0 0v35M17.5 0v14M35 0v23M52.5 0v14" fill="none" stroke="#171714" stroke-width="2.5"/>
+    </pattern>
+  </defs>
+  <rect x="2" y="2" width="896" height="82" rx="2" fill="#ebd276" stroke="#171714" stroke-width="4"/>
+  <path d="M30 3h840v35H30z" fill="url(#ticks)"/>
+  <path d="M870 3v35" stroke="#171714" stroke-width="2.5"/>
+  <g fill="#171714" font-family="Helvetica, Arial, sans-serif" font-weight="800" font-size="22" text-anchor="middle">
+    <text x="30" y="65">0</text>
+    <text x="100" y="65">1</text>
+    <text x="170" y="65">2</text>
+    <text x="240" y="65">3</text>
+    <text x="310" y="65">4</text>
+    <text x="380" y="65">5</text>
+    <text x="450" y="65">6</text>
+    <text x="520" y="65">7</text>
+    <text x="590" y="65">8</text>
+    <text x="660" y="65">9</text>
+    <text x="730" y="65">10</text>
+    <text x="800" y="65">11</text>
+    <text x="870" y="65">12</text>
+  </g>
+</svg>

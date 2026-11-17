@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Made with Samizdat: a forthcoming public distro of zines created with the Samizdat app." />
+    <meta name="theme-color" content="#ef5536" />
+    <title>Made with Samizdat — The distro</title>
+    <link rel="icon" href="./samizdat-icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./samizdat-icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./samizdat-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./editorial.css" />
+    <script src="./main.js" type="module"></script>
+  </head>
+  <body class="editorial-page gallery-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="./index.html" aria-label="Samizdat home"><img src="./samizdat-icon.svg" alt="" /><span>SAMIZDAT</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="./index.html">Product</a>
+        <a href="./about.html">Why the name?</a>
+        <a href="./gallery.html" aria-current="page">Made with Samizdat</a>
+        <a href="./compare.html">Compare</a>
+        <a href="./store.html">Supply room</a>
+        <button class="nav-buy" type="button" data-alpha-contact>Ask to test Samizdat</button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="editorial-hero">
+        <div>
+          <p class="eyebrow"><span></span>Made with Samizdat</p>
+          <h1>The distro starts here.</h1>
+          <p class="hero-deck">A growing shelf of finished zines made with Samizdat—available to read, print, fold, and pass along.</p>
+        </div>
+        <aside class="hero-note"><strong>Not a content feed</strong><p>This gallery is for things people made on purpose. Each submission should remain a work by its creator, with clear permission for the ways it is displayed and shared.</p></aside>
+      </section>
+
+      <div class="editorial-meta"><span><strong>Submissions:</strong> open by email</span><span>A public shelf for finished work made with Samizdat.</span></div>
+      <section class="ticker" aria-label="The distro in three moves">
+        <div>
+          <span>MAKE IT</span><i>✦</i><span>PRINT IT</span><i>✦</i><span>PASS IT ON</span><i>✦</i>
+          <span>MAKE IT</span><i>✦</i><span>PRINT IT</span><i>✦</i><span>PASS IT ON</span><i>✦</i>
+          <span>MAKE IT</span><i>✦</i><span>PRINT IT</span><i>✦</i><span>PASS IT ON</span><i>✦</i>
+          <span aria-hidden="true">MAKE IT</span><i aria-hidden="true">✦</i><span aria-hidden="true">PRINT IT</span><i aria-hidden="true">✦</i><span aria-hidden="true">PASS IT ON</span><i aria-hidden="true">✦</i>
+        </div>
+      </section>
+
+      <section class="page-section cream" aria-labelledby="gallery-title">
+        <div class="page-heading"><p class="section-kicker">The collection</p><h2 id="gallery-title">Your zine belongs in the room.</h2><p>The first edition of this gallery is an invitation: show us what Samizdat helped you make.</p></div>
+        <div class="gallery-grid">
+          <article class="gallery-card gallery-card-feature"><div class="gallery-art"><span>YOUR<br />ZINE<br />HERE</span><i>01</i></div><div class="gallery-copy"><b>SUBMISSION SLOT</b><h3>A cover, a question, a reason to share.</h3><p>Finished zines will appear here with their maker’s name, a short description, and a way to download or print the work.</p></div></article>
+          <article class="gallery-card"><div class="gallery-art gallery-art-blue"><span>OPEN<br />CALL</span><i>02</i></div><div class="gallery-copy"><b>COMING SOON</b><h3>Make a thing for a person.</h3><p>Personal, political, instructional, funny, tender, local, strange: the distro is for small publications with somewhere to go.</p></div></article>
+          <article class="gallery-card"><div class="gallery-art gallery-art-yellow"><span>PASS<br />IT ON</span><i>03</i></div><div class="gallery-copy"><b>DISTRIBUTION</b><h3>Download. Print. Share.</h3><p>The point is not to collect attention here. It is to help the work leave the screen and travel into somebody else’s hands.</p></div></article>
+        </div>
+      </section>
+
+      <section class="page-section orange" id="submit" aria-labelledby="submit-title">
+        <div class="page-heading"><p class="section-kicker">Submit a zine</p><h2 id="submit-title">Bring us the finished thing.</h2><p>Fill this out, choose your files, and we’ll prepare a submission email with everything the distro needs to review your work.</p></div>
+        <div class="submission-layout">
+          <form class="submission-form" data-submission-form novalidate>
+            <div class="submission-form-grid">
+              <label><span>Your name or preferred credit <b>*</b></span><input name="credit" type="text" autocomplete="name" required /></label>
+              <label><span>Email address <b>*</b></span><input name="email" type="email" autocomplete="email" required /></label>
+              <label><span>Zine title <b>*</b></span><input name="title" type="text" required /></label>
+              <label><span>Where are you making from?</span><input name="location" type="text" placeholder="City, region, or leave blank" /></label>
+              <label class="submission-field-wide"><span>Tell us about the zine <b>*</b></span><textarea name="description" rows="5" placeholder="What is it about, and who is it for?" required></textarea></label>
+              <label class="file-input"><span>Print-ready PDF <b>*</b></span><input name="pdf" type="file" accept="application/pdf,.pdf" required /><small>One PDF, up to 25 MB. Export it from Samizdat at 100% / Actual Size.</small></label>
+              <label class="file-input"><span>Cover or preview image <b>*</b></span><input name="cover" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" required /><small>PNG, JPEG, or WebP, up to 5 MB.</small></label>
+            </div>
+            <fieldset class="submission-permissions"><legend>Before you send</legend>
+              <label><input name="made-with-samizdat" type="checkbox" required /><span>I made this zine with Samizdat, or I have permission from the maker to submit it.</span></label>
+              <label><input name="rights" type="checkbox" required /><span>I own or have permission to share the text, images, and other material in this zine.</span></label>
+              <label><input name="distribution" type="checkbox" required /><span>I grant Samizdat non-exclusive permission to display this zine and, if approved, offer it for download, printing, and sharing.</span></label>
+              <label><input name="removal" type="checkbox" required /><span>I understand that Samizdat may review or decline submissions, and that I can ask for a published submission to be removed.</span></label>
+            </fieldset>
+            <div class="submission-form-actions"><button class="button button-dark" type="submit">Prepare submission email <span>→</span></button><p class="submission-privacy">The webpage validates your files locally. It does not upload them. Your email app will open a draft; attach the two selected files before sending.</p></div>
+            <p class="submission-status" data-submission-status aria-live="polite"></p>
+          </form>
+          <aside class="submission-note"><b>WHAT HAPPENS NEXT</b><h3>Make the handoff easy.</h3><ol><li>We review the zine and its permissions.</li><li>We may reply with a question or a request for a better file.</li><li>If accepted, we publish it with your chosen credit and the distribution permissions you approved.</li><li>You can ask us to update or remove it later.</li></ol><p class="submission-inbox-note"><strong>For now:</strong> the email draft uses the existing Samizdat support address. We’ll replace it with a dedicated submissions address before a public launch.</p><a class="button button-dark" href="#submission-notes">Read the distro principles <span>↓</span></a></aside>
+        </div>
+      </section>
+
+      <section class="page-section blue" id="submission-notes" aria-labelledby="distro-title">
+        <div class="page-heading"><p class="section-kicker">The distro promise</p><h2 id="distro-title">More than a showcase.</h2><p>A finished zine is meant to move.</p></div>
+        <div class="callout-grid">
+          <article class="callout-card"><b>01 / CREDIT</b><h3>Name the maker.</h3><p>Every published zine will carry the creator’s chosen credit and a link or note they approve.</p></article>
+          <article class="callout-card"><b>02 / ACCESS</b><h3>Make it usable.</h3><p>Where permission allows, entries will include a downloadable file and practical notes for printing, cutting, and folding.</p></article>
+          <article class="callout-card"><b>03 / HANDOFF</b><h3>Help it travel.</h3><p>Visitors should be encouraged to print a copy, give it to someone, teach from it, or make another copy with permission.</p></article>
+        </div>
+      </section>
+
+      <section class="final-cta"><img src="./samizdat-icon.svg" alt="" /><p>Make the zine. We’ll help it travel.</p><button class="button button-dark" type="button" data-alpha-contact>Ask to test Samizdat</button></section>
+    </main>
+
+    <footer class="site-footer"><a class="brand brand-footer" href="./index.html"><img src="./samizdat-icon.svg" alt="" /><span>SAMIZDAT</span></a><p>A private, local-first studio for making publications people can hold.</p><div><a href="./index.html">Product</a><a href="./about.html">Why the name?</a><a href="./gallery.html">Made with Samizdat</a><a href="./compare.html">Compare</a><a href="./store.html">Supply room</a></div><small>First dispatches coming soon.</small></footer>
+
+    <dialog class="notice-dialog" data-alpha-dialog aria-labelledby="alpha-contact-title">
+      <button class="dialog-close" type="button" data-dialog-close aria-label="Close">×</button>
+      <img src="./samizdat-icon.svg" alt="" />
+      <p class="section-kicker">Samizdat alpha testing</p>
+      <h2 id="alpha-contact-title">Help shape Samizdat.</h2>
+      <p>Samizdat is in alpha and is available free to selected testers. Interested in trying it and sharing feedback? Email <a href="mailto:hey@travelinreid.com?subject=Samizdat">hey@travelinreid.com</a> with <strong>Samizdat</strong> in the subject line.</p>
+      <a class="button button-orange" href="mailto:hey@travelinreid.com?subject=Samizdat">Email about testing <span aria-hidden="true">→</span></a>
+    </dialog>
+  </body>
+</html>

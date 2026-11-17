@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Samizdat is a private, local-first desktop studio for making one-sheet zines."
+    />
+    <meta name="theme-color" content="#ef5536" />
+    <title>Samizdat — Publish something the feed can’t bury.</title>
+    <link rel="icon" href="./samizdat-icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./samizdat-icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./samizdat-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./main.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Samizdat home">
+        <img src="./samizdat-icon.svg" alt="" />
+        <span>SAMIZDAT</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <a href="#top">Product</a>
+        <a href="./about.html">Why the name?</a>
+        <a href="./gallery.html">Made with Samizdat</a>
+        <a href="#studio">The studio</a>
+        <a href="./compare.html">Compare</a>
+        <a href="./store.html">Supply room</a>
+        <button class="nav-buy" type="button" data-alpha-contact>Ask to test Samizdat</button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span>A local-first zine studio</p>
+          <h1>Publish something the feed can’t bury.</h1>
+          <p class="hero-deck">
+            Samizdat turns one sheet of paper into a private, printable little publication—made on
+            your computer, shared by hand.
+          </p>
+
+          <div class="hero-actions">
+            <button class="button button-dark" type="button" data-alpha-contact>Ask to test Samizdat</button>
+            <a class="text-link" href="#studio">See what it does <span aria-hidden="true">↓</span></a>
+          </div>
+
+          <ul class="proof-strip" aria-label="Product highlights">
+            <li><strong>In alpha</strong><span>Help shape the studio</span></li>
+            <li><strong>Local first</strong><span>Your work stays yours</span></li>
+            <li><strong>Mac build alpha</strong><span>PC version coming</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-art" aria-label="A playful preview of the Samizdat app">
+          <div class="bear-sticker" data-bear role="button" tabindex="0" aria-label="Hear from the Samizdat bear">
+            <span class="sticker-note" data-bear-note>No cloud. No algorithm. Just your ideas and a sheet of paper.</span>
+            <img src="./samizdat-icon.svg" alt="The Samizdat bear mascot" />
+            <span class="sticker-tape" aria-hidden="true"></span>
+          </div>
+
+          <div class="app-window" aria-hidden="true">
+            <div class="window-bar">
+              <div class="window-dots"><i></i><i></i><i></i></div>
+              <span>field-notes.samizdat</span>
+              <b>88%</b>
+            </div>
+            <div class="app-body">
+              <div class="tool-rail">
+                <span class="tool active">↖</span>
+                <span class="tool">T</span>
+                <span class="tool">▧</span>
+                <span class="tool">○</span>
+                <span class="tool">✦</span>
+              </div>
+              <div class="page-stage">
+                <div class="zine-page">
+                  <p>NOTES FROM<br />THE OTHER<br />SIDE</p>
+                  <div class="page-sun"></div>
+                  <small>Issue No. 01</small>
+                </div>
+              </div>
+              <div class="inspector">
+                <b>PAGE</b>
+                <div><span>Paper</span><strong>Letter</strong></div>
+                <div><span>Template</span><strong>8-page</strong></div>
+                <div><span>View</span><strong>Upright</strong></div>
+                <div class="print-check"><i>✓</i><span>Print check passed</span></div>
+              </div>
+            </div>
+          </div>
+          <p class="art-caption"><b>YOU SPEAK YOUR MIND.</b> Samizdat perfectly packages the zine.</p>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Samizdat principles">
+        <div>
+          <span>MAKE IT</span><i>✦</i><span>PRINT IT</span><i>✦</i><span>FOLD IT</span><i>✦</i><span>PASS IT ON</span><i>✦</i>
+          <span>MAKE IT</span><i>✦</i><span>PRINT IT</span><i>✦</i><span>FOLD IT</span><i>✦</i><span>PASS IT ON</span><i>✦</i>
+          <span>MAKE IT</span><i>✦</i><span>PRINT IT</span><i>✦</i><span>FOLD IT</span><i>✦</i><span>PASS IT ON</span><i>✦</i>
+          <span aria-hidden="true">MAKE IT</span><i aria-hidden="true">✦</i><span aria-hidden="true">PRINT IT</span><i aria-hidden="true">✦</i>
+        </div>
+      </section>
+
+      <section class="manifesto" id="why">
+        <p class="section-kicker">Why make a zine now?</p>
+        <div class="manifesto-grid">
+          <div class="manifesto-heading">
+            <h2>The physical world could use more brave little objects.</h2>
+            <img class="manifesto-bear" src="./illustrations/bear-reading-reclined.png" width="1752" height="897" alt="The Samizdat bear lying on its back, reading a zine." loading="lazy" decoding="async" />
+          </div>
+          <div class="manifesto-copy">
+            <p>
+              Let others feed the feeds. Let them scroll to eternity. Let the platforms filter, throttle, ban,
+              and bury till the churn is one froth.
+            </p>
+            <p>
+              We will fold an idea into a hand-to-hand lifeboat. A paper vessel for a
+              bold idea, a small kindness, a field guide, a warning, a joke, a lesson, or a love letter.
+            </p>
+            <p class="marker-line">Samizdat is not another platform. It helps you make a real thing and put it out into the world.</p>
+            <a class="text-link" href="./about.html">Why the name Samizdat? <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="studio" id="studio">
+        <div class="section-heading">
+          <p class="section-kicker">The studio</p>
+          <h2>So many tools.<br />Very little ceremony.</h2>
+          <p>Start with a template. End with a world-rocking zine ready to print, cut, fold, and share.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card feature-orange">
+            <span class="feature-number">01</span>
+            <div class="mini-sheet" aria-hidden="true"><i>8</i><i>1</i><i>6</i><i>7</i><i>5</i><i>4</i><i>3</i><i>2</i></div>
+            <h3>You write it in sequence.</h3>
+            <p>Samizdat handles page order, rotation, cut lines, fold lines, and full-page printing prep.</p>
+          </article>
+
+          <article class="feature-card feature-cream">
+            <span class="feature-number">02</span>
+            <div class="privacy-mark" aria-hidden="true"><span>LOCAL</span><b>↯</b><span>PRIVATE</span></div>
+            <h3>Your work stays yours.</h3>
+            <p>No account. No uploads. No password to remember. Projects and imported images live on your machine.</p>
+          </article>
+
+          <article class="feature-card feature-ink">
+            <span class="feature-number">03</span>
+            <div class="tool-cloud" aria-hidden="true"><b>T</b><b>▧</b><b>◯</b><b>↻</b><b>⌘</b></div>
+            <h3>It’s a real studio.</h3>
+            <p>Add type, images, and shapes. Rotate them. Or turn a PDF or Word document into a panel-by-panel draft. Preview the fold. Export, print, repeat.</p>
+          </article>
+
+          <article class="feature-card feature-blue">
+            <span class="feature-number">04</span>
+            <div class="paper-stack" aria-hidden="true"><i>A4</i><i>11×17</i><i>8½×11</i></div>
+            <h3>Paper size is part of the idea.</h3>
+            <p>Work across Letter, Legal, Tabloid, A-series sizes, portrait books, and landscape folds.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="process" aria-labelledby="process-title">
+        <div class="process-intro">
+          <p class="section-kicker">One sheet. Four steps.</p>
+          <h2 id="process-title">From blank page to love bomb.</h2>
+        </div>
+        <ol class="process-list">
+          <li><span>1</span><b>Make</b><p>Build each page with familiar layout tools.</p></li>
+          <li><span>2</span><b>Print</b><p>Let Samizdat arrange the full sheet automatically.</p></li>
+          <li><span>3</span><b>Fold</b><p>Follow the guide for the template you chose.</p></li>
+          <li><span>4</span><b>Pass it on</b><p>Leave it, mail it, trade it, teach with it.</p></li>
+        </ol>
+      </section>
+
+      <section class="alpha-section" aria-labelledby="alpha-title">
+        <div class="alpha-card">
+          <div class="alpha-copy">
+            <p class="section-kicker">Help shape the studio</p>
+            <h2 id="alpha-title">Make zines.<br />Help us improve.</h2>
+            <p class="alpha-lede">Samizdat is available free to selected alpha testers. Try the Mac app, make something, and tell us what works—and what needs work.</p>
+            <p class="alpha-note">Mac alpha · By invitation · Feedback welcome</p>
+          </div>
+          <div class="alpha-details">
+            <ul>
+              <li><span>✓</span>Classic eight-page one-sheet template — plus 6 experimental templates</li>
+              <li><span>✓</span>Advanced text, image, and shape tools</li>
+              <li><span>✓</span>Reading-order and imposed-sheet previews</li>
+              <li><span>✓</span>High-resolution PNG and print-ready PDF output</li>
+              <li><span>✓</span>Local projects, recovery, and multiple open zines</li>
+            </ul>
+            <button class="button button-orange" type="button" data-alpha-contact>Ask to test Samizdat</button>
+            <small>Interested? Email hey@travelinreid.com with “Samizdat” in the subject line.</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="supply-room" id="supply-room">
+        <div class="supply-visual" aria-hidden="true">
+          <div class="supply-label">MAKERS<br />WELCOME</div>
+          <img class="supply-bear" src="./illustrations/bear-cutting-zine.png" width="1024" height="1536" alt="" loading="lazy" decoding="async" />
+          <div class="tape-kit">
+            <span class="tape-tail"></span>
+            <span class="tape-roll"></span>
+            <span class="tape-strip tape-strip-one"></span>
+            <span class="tape-strip tape-strip-two"></span>
+          </div>
+          <img class="ruler" src="./illustrations/ruler.svg" width="900" height="86" alt="" loading="lazy" />
+        </div>
+        <div class="supply-copy">
+          <p class="section-kicker">The Samizdat supply room</p>
+          <h2>Tools we've got on our own table.</h2>
+          <p>
+            Every craft has its favorite tools. Here's what we're using for scissors, long-arm staplers, bone folders, awls, archival tape, cutting
+            mats, paper, and thread — rated for usefulness, value, labor, and environmental care.
+          </p>
+          <a class="text-link supply-button" href="./store.html">Enter the supply room <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <img src="./samizdat-icon.svg" alt="" />
+        <p>One sheet is enough to start something.</p>
+        <button class="button button-dark" type="button" data-alpha-contact>Ask to test Samizdat</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="#top">
+        <img src="./samizdat-icon.svg" alt="" />
+        <span>SAMIZDAT</span>
+      </a>
+      <p>A private, local-first studio for making publications people can hold.</p>
+      <div>
+        <a href="#studio">Product</a>
+        <a href="./about.html">Why the name?</a>
+        <a href="./gallery.html">Made with Samizdat</a>
+        <a href="./compare.html">Compare</a>
+        <a href="./store.html">Store</a>
+        <button type="button" data-alpha-contact>Ask to test Samizdat</button>
+      </div>
+      <small>Samizdat · Mac alpha</small>
+    </footer>
+
+    <dialog class="notice-dialog" data-alpha-dialog aria-labelledby="alpha-contact-title">
+      <button class="dialog-close" type="button" data-dialog-close aria-label="Close">×</button>
+      <img src="./samizdat-icon.svg" alt="" />
+      <p class="section-kicker">Samizdat alpha testing</p>
+      <h2 id="alpha-contact-title">Help shape Samizdat.</h2>
+      <p>Samizdat is in alpha and is available free to selected testers. Interested in trying it and sharing feedback? Email <a href="mailto:hey@travelinreid.com?subject=Samizdat">hey@travelinreid.com</a> with <strong>Samizdat</strong> in the subject line.</p>
+      <a class="button button-orange" href="mailto:hey@travelinreid.com?subject=Samizdat">Email about testing <span aria-hidden="true">→</span></a>
+    </dialog>
+
+    <dialog class="notice-dialog store-dialog" data-store-dialog aria-labelledby="store-title">
+      <button class="dialog-close" type="button" data-store-close aria-label="Close">×</button>
+      <p class="section-kicker">Supply room preview</p>
+      <h2 id="store-title">Curated first.<br />Commerce second.</h2>
+      <p>
+        The recommended first version is a small, editorial collection of genuinely useful tools
+        with clearly disclosed affiliate links. That tests demand before Samizdat becomes responsible
+        for fulfillment, returns, and customer service.
+      </p>
+      <button class="button button-orange" type="button" data-store-close>Got it</button>
+    </dialog>
+  </body>
+</html>

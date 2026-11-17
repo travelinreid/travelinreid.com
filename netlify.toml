@@ -1,0 +1,4 @@
+# Samizdat website; the personal website continues to deploy through GitHub Pages.
+[build]
+  command = ""
+  publish = "samizdat"
