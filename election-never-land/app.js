@@ -10,16 +10,16 @@ const statusText=r=>r.year===null?'Open gap · as of Nov. 12, 2026':r.status?.in
 function sources(r){return `<details class="sources"><summary>${r.sources.length===1?'Source':'Sources'}</summary><ul>${r.sources.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)} ↗</a><small>${esc(s.publisher)}${s.kind?' · '+esc(s.kind.replaceAll('-',' ')):''}</small>${s.claimSupported?`<small>${esc(s.claimSupported)}</small>`:''}</li>`).join('')}</ul></details>`;}
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 const facts={
-'revels-1870':'Hiram Revels of Mississippi was the first black member of Congress.',
+'revels-1870':'Hiram Revels of Mississippi was the first Black member of Congress.',
 'rankin-1916':'Jeannette Rankin of Montana was the first woman elected to Congress.',
 'felton-1922':'Rebecca Latimer Felton of Georgia was the first woman to serve in the U.S. Senate.',
 'caraway-1932':'Hattie Caraway of Arkansas was the first woman elected to the U.S. Senate.',
 'saund-1956':'Dalip Singh Saund of California was the first Asian American elected as a voting member of Congress.',
 'mink-1964':'Patsy Takemoto Mink of Hawaii was the first woman of color elected to Congress.',
-'brooke-1966':'Edward Brooke of Massachusetts was the first black U.S. senator elected by popular vote.',
-'chisholm-1968':'Shirley Chisholm of New York was the first black woman elected to Congress.',
-'wilder-1989':'L. Douglas Wilder of Virginia was the first black governor of a U.S. state elected by voters.',
-'moseley-braun-1992':'Carol Moseley Braun of Illinois was the first black woman elected to the U.S. Senate.',
+'brooke-1966':'Edward Brooke of Massachusetts was the first Black U.S. senator elected by popular vote.',
+'chisholm-1968':'Shirley Chisholm of New York was the first Black woman elected to Congress.',
+'wilder-1989':'L. Douglas Wilder of Virginia was the first Black governor of a U.S. state elected by voters.',
+'moseley-braun-1992':'Carol Moseley Braun of Illinois was the first Black woman elected to the U.S. Senate.',
 'ellison-2006':'Keith Ellison of Minnesota was the first Muslim elected to Congress.',
 'martinez-2010':'Susana Martinez of New Mexico was the first Latina elected governor of a U.S. state.',
 'baldwin-senate-2012':'Tammy Baldwin of Wisconsin was the first openly gay candidate elected to the U.S. Senate.',
@@ -35,7 +35,7 @@ const facts={
 'mcbride-2024':'Sarah McBride of Delaware was the first openly transgender person elected to Congress.',
 '2026-acton':'Amy Acton was the first woman elected governor of Ohio.',
 '2026-andrews':'Annie Andrews was the first woman elected to the U.S. Senate from South Carolina.',
-'2026-bottoms':'Keisha Lance Bottoms of Georgia was the first black woman elected governor of a U.S. state.',
+'2026-bottoms':'Keisha Lance Bottoms of Georgia was the first Black woman elected governor of a U.S. state.',
 '2026-el-sayed':'Abdul El-Sayed of Michigan was the first Muslim elected to the U.S. Senate.',
 '2026-flanagan':'Peggy Flanagan of Minnesota was the first Native American woman elected to the U.S. Senate.',
 '2026-haaland':'Deb Haaland of New Mexico was the first Native American woman elected as a U.S. governor.',
@@ -46,14 +46,14 @@ const mcBank=[
  {id:'mc-house-woman',prompt:'Who was the first woman elected to Congress?',correct:'Jeannette Rankin',options:['Jeannette Rankin','Shirley Chisholm','Patsy Takemoto Mink','Hattie Caraway'],record:'rankin-1916'},
  {id:'mc-senate-woman',prompt:'Who was the first woman elected to the U.S. Senate?',correct:'Hattie Caraway',options:['Hattie Caraway','Rebecca Latimer Felton','Tammy Baldwin','Carol Moseley Braun'],record:'caraway-1932'},
  {id:'mc-first-muslim',prompt:'Who was the first Muslim elected to Congress?',correct:'Keith Ellison',options:['Keith Ellison','Ilhan Omar','Rashida Tlaib','Abdul El-Sayed'],record:'ellison-2006'},
- {id:'mc-black-woman-senate',prompt:'Who was the first black woman elected to the U.S. Senate?',correct:'Carol Moseley Braun',options:['Carol Moseley Braun','Shirley Chisholm','Kamala Harris','Juliana Stratton'],record:'moseley-braun-1992'},
+ {id:'mc-black-woman-senate',prompt:'Who was the first Black woman elected to the U.S. Senate?',correct:'Carol Moseley Braun',options:['Carol Moseley Braun','Shirley Chisholm','Kamala Harris','Juliana Stratton'],record:'moseley-braun-1992'},
  {id:'mc-latina-governor',prompt:'Who was the first Latina elected governor of a U.S. state?',correct:'Susana Martinez',options:['Susana Martinez','Catherine Cortez Masto','Gina Hinojosa','Deb Haaland'],record:'martinez-2010'},
  {id:'mc-trans-congress',prompt:'Who was the first openly transgender person elected to Congress?',correct:'Sarah McBride',options:['Sarah McBride','Danica Roem','Tammy Baldwin','Sharice Davids'],record:'mcbride-2024'}
 ];
 const mapBank=[
  {id:'map-mississippi',prompt:'Which state has never sent a woman to the U.S. House?',correct:'Mississippi',record:'mississippi-woman-house-open'},
  {id:'map-rankin',prompt:'Which state elected the first woman to Congress?',correct:'Montana',record:'rankin-1916'},
- {id:'map-chisholm',prompt:'Which state elected the first black woman to Congress?',correct:'New York',record:'chisholm-1968'},
+ {id:'map-chisholm',prompt:'Which state elected the first Black woman to Congress?',correct:'New York',record:'chisholm-1968'},
  {id:'map-martinez',prompt:'Which state elected the first Latina governor?',correct:'New Mexico',record:'martinez-2010'}
 ];
 const state={round:0,score:0,guesses:[],deck:[],revealed:false};

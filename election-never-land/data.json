@@ -48,7 +48,7 @@
     {
       "id": "rainey-1870",
       "person": "Joseph Rainey",
-      "title": "First black member to serve in the U.S. House",
+      "title": "First Black member to serve in the U.S. House",
       "office": "U.S. House",
       "state": "South Carolina",
       "dimensions": [
@@ -69,13 +69,13 @@
           "url": "https://history.house.gov/Institution/Firsts-Milestones/Member-Firsts/",
           "publisher": "U.S. House of Representatives",
           "kind": "official_history",
-          "claimSupported": "First black member to serve in the U.S. House",
+          "claimSupported": "First Black member to serve in the U.S. House",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         }
       ],
       "dateType": "service",
-      "headline": "First black member to serve in the U.S. House",
+      "headline": "First Black member to serve in the U.S. House",
       "year": 1870,
       "eventLabel": "Entered office",
       "places": [
@@ -88,7 +88,7 @@
     {
       "id": "revels-1870",
       "person": "Hiram Revels",
-      "title": "First black member of Congress",
+      "title": "First Black member of Congress",
       "office": "U.S. Senate",
       "state": "Mississippi",
       "dimensions": [
@@ -109,7 +109,7 @@
           "url": "https://www.senate.gov/artandhistory/senate-stories/First-African-American-Senator.htm",
           "publisher": "U.S. Senate Historical Office",
           "kind": "official_history",
-          "claimSupported": "First black member of Congress",
+          "claimSupported": "First Black member of Congress",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         },
@@ -123,7 +123,7 @@
         }
       ],
       "dateType": "oath",
-      "headline": "First black member of Congress",
+      "headline": "First Black member of Congress",
       "year": 1870,
       "eventLabel": "Entered office",
       "places": [
@@ -131,7 +131,7 @@
       ],
       "publishReady": true,
       "asOf": "2026-11-12",
-      "gamePrompt": "A black American takes a seat in the U.S. Congress for the first time."
+      "gamePrompt": "A Black American takes a seat in the U.S. Congress for the first time."
     },
     {
       "id": "pacheco-1876",
@@ -176,7 +176,7 @@
     {
       "id": "bruce-1874",
       "person": "Blanche Kelso Bruce",
-      "title": "First black senator to complete a full term",
+      "title": "First Black senator to complete a full term",
       "office": "U.S. Senate",
       "state": "Mississippi",
       "dimensions": [
@@ -189,7 +189,7 @@
       "date": "1881-03-03",
       "status": "historical_verified",
       "summary": "Bruce completed his six-year Senate term in 1881, after election by the Mississippi legislature in 1874.",
-      "qualifier": "Election: February 4, 1874. Service: March 4, 1875–March 3, 1881. The timeline year is completion, not election. He was the second black senator, after Hiram Revels.",
+      "qualifier": "Election: February 4, 1874. Service: March 4, 1875–March 3, 1881. The timeline year is completion, not election. He was the second Black senator, after Hiram Revels.",
       "verifiedAsOf": "2026-11-12",
       "sources": [
         {
@@ -197,13 +197,13 @@
           "url": "https://history.house.gov/People/Detail/10029",
           "publisher": "U.S. House of Representatives",
           "kind": "official_biography",
-          "claimSupported": "First black senator to complete a full term",
+          "claimSupported": "First Black senator to complete a full term",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         }
       ],
       "dateType": "term_completion",
-      "headline": "First black senator to complete a full term",
+      "headline": "First Black senator to complete a full term",
       "year": 1881,
       "eventLabel": "Term completed",
       "places": [
@@ -628,7 +628,7 @@
     {
       "id": "brooke-1966",
       "person": "Edward Brooke",
-      "title": "First black senator elected by popular vote",
+      "title": "First Black senator elected by popular vote",
       "office": "U.S. Senate",
       "state": "Massachusetts",
       "dimensions": [
@@ -640,7 +640,7 @@
       "eventYear": 1966,
       "date": "1966-11-08",
       "status": "historical_verified",
-      "summary": "Brooke won election in 1966 and entered the Senate in 1967, ending a nearly 86-year absence of black senators.",
+      "summary": "Brooke won election in 1966 and entered the Senate in 1967, ending a nearly 86-year absence of Black senators.",
       "qualifier": "Revels and Bruce had been selected by state legislatures. The 86-year interval runs from Bruce leaving in 1881 to Brooke serving in 1967.",
       "verifiedAsOf": "2026-11-12",
       "sources": [
@@ -649,13 +649,13 @@
           "url": "https://history.house.gov/People/Detail/9905",
           "publisher": "U.S. House of Representatives",
           "kind": "official_biography",
-          "claimSupported": "First black senator elected by popular vote",
+          "claimSupported": "First Black senator elected by popular vote",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         }
       ],
       "dateType": "election",
-      "headline": "First black senator elected by popular vote",
+      "headline": "First Black senator elected by popular vote",
       "year": 1966,
       "eventLabel": "Election",
       "places": [
@@ -663,12 +663,12 @@
       ],
       "publishReady": true,
       "asOf": "2026-11-12",
-      "gamePrompt": "Voters directly elect a black U.S. senator for the first time."
+      "gamePrompt": "Voters directly elect a Black U.S. senator for the first time."
     },
     {
       "id": "marshall-1967",
       "person": "Thurgood Marshall",
-      "title": "First black U.S. Supreme Court justice",
+      "title": "First Black U.S. Supreme Court justice",
       "office": "U.S. Supreme Court",
       "state": "United States",
       "dimensions": [
@@ -685,17 +685,17 @@
       "verifiedAsOf": "2026-11-13",
       "sources": [
         {
-          "title": "First black U.S. Supreme Court justice",
+          "title": "First Black U.S. Supreme Court justice",
           "url": "https://www.supremecourt.gov/about/faq_justices.aspx",
           "publisher": "Supreme Court of the United States",
           "kind": "official_history",
-          "claimSupported": "First black U.S. Supreme Court justice",
+          "claimSupported": "First Black U.S. Supreme Court justice",
           "accessStatus": "opened",
           "checkedOn": "2026-11-13"
         }
       ],
       "dateType": null,
-      "headline": "First black U.S. Supreme Court justice",
+      "headline": "First Black U.S. Supreme Court justice",
       "year": 1967,
       "eventLabel": "Took office",
       "places": [
@@ -708,7 +708,7 @@
     {
       "id": "chisholm-1968",
       "person": "Shirley Chisholm",
-      "title": "First black woman elected to Congress",
+      "title": "First Black woman elected to Congress",
       "office": "U.S. House",
       "state": "New York",
       "dimensions": [
@@ -722,7 +722,7 @@
       "date": null,
       "status": "historical_verified",
       "summary": "Chisholm bucked traditional expectations of freshmen representatives to not \"rock the boat,\" becoming an immediately vocal advocate on issues such as the Vietnam War.",
-      "qualifier": "Chisholm’s freshman class included two other black members, increasing black representation in the U.S. House from six to nine.",
+      "qualifier": "Chisholm’s freshman class included two other Black members, increasing Black representation in the U.S. House from six to nine.",
       "verifiedAsOf": "2026-11-12",
       "sources": [
         {
@@ -730,7 +730,7 @@
           "url": "https://history.house.gov/Education/Fact-Sheets/WIC-Fact-Sheet2/",
           "publisher": "U.S. House of Representatives",
           "kind": "official_history",
-          "claimSupported": "First black woman elected to Congress",
+          "claimSupported": "First Black woman elected to Congress",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         },
@@ -739,7 +739,7 @@
           "url": "https://history.house.gov/Institution/Firsts-Milestones/Member-Firsts/",
           "publisher": "U.S. House of Representatives",
           "kind": "official_history",
-          "claimSupported": "First black woman elected to Congress",
+          "claimSupported": "First Black woman elected to Congress",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         },
@@ -748,12 +748,12 @@
           "url": "https://history.house.gov/People/Detail/10918",
           "publisher": "U.S. House Office of the Historian",
           "kind": "official_history",
-          "claimSupported": "Vietnam War remarks and black representation in the House",
+          "claimSupported": "Vietnam War remarks and Black representation in the House",
           "checkedOn": "2026-11-13"
         }
       ],
       "dateType": null,
-      "headline": "First black woman elected to Congress",
+      "headline": "First Black woman elected to Congress",
       "year": 1968,
       "eventLabel": "Election",
       "places": [
@@ -761,7 +761,7 @@
       ],
       "publishReady": true,
       "asOf": "2026-11-12",
-      "gamePrompt": "A black woman wins election to Congress for the first time."
+      "gamePrompt": "A Black woman wins election to Congress for the first time."
     },
     {
       "id": "grasso-1974",
@@ -962,7 +962,7 @@
     {
       "id": "wilder-1989",
       "person": "L. Douglas Wilder",
-      "title": "First black governor elected by voters",
+      "title": "First Black governor elected by voters",
       "office": "Governor",
       "state": "Virginia",
       "dimensions": [
@@ -983,7 +983,7 @@
           "url": "https://www.lva.virginia.gov/collections/educator-resources/online-classroom/stc/entries/douglas-wilder-was-inaugurated-governor-of-virginia-january-13-1990",
           "publisher": "Library of Virginia",
           "kind": "official_history",
-          "claimSupported": "First black governor elected by voters",
+          "claimSupported": "First Black governor elected by voters",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         },
@@ -997,7 +997,7 @@
         }
       ],
       "dateType": null,
-      "headline": "First black governor elected by voters",
+      "headline": "First Black governor elected by voters",
       "year": 1989,
       "eventLabel": "Election",
       "places": [
@@ -1005,12 +1005,12 @@
       ],
       "publishReady": true,
       "asOf": "2026-11-12",
-      "gamePrompt": "Voters elect a black governor of a U.S. state for the first time."
+      "gamePrompt": "Voters elect a Black governor of a U.S. state for the first time."
     },
     {
       "id": "moseley-braun-1992",
       "person": "Carol Moseley Braun",
-      "title": "First black woman elected to the U.S. Senate",
+      "title": "First Black woman elected to the U.S. Senate",
       "office": "U.S. Senate",
       "state": "Illinois",
       "dimensions": [
@@ -1032,7 +1032,7 @@
           "url": "https://www.senate.gov/senators/FeaturedBios/Featured_Bio_Moseley_Braun.htm",
           "publisher": "U.S. Senate Historical Office",
           "kind": "official_history",
-          "claimSupported": "First black woman elected to the U.S. Senate",
+          "claimSupported": "First Black woman elected to the U.S. Senate",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         },
@@ -1046,7 +1046,7 @@
         }
       ],
       "dateType": null,
-      "headline": "First black woman elected to the U.S. Senate",
+      "headline": "First Black woman elected to the U.S. Senate",
       "year": 1992,
       "eventLabel": "Election",
       "places": [
@@ -1054,7 +1054,7 @@
       ],
       "publishReady": true,
       "asOf": "2026-11-12",
-      "gamePrompt": "A black woman wins election to the U.S. Senate for the first time."
+      "gamePrompt": "A Black woman wins election to the U.S. Senate for the first time."
     },
     {
       "id": "velazquez-1992",
@@ -1233,7 +1233,7 @@
     {
       "id": "obama-2008",
       "person": "Barack Obama",
-      "title": "First black president elected",
+      "title": "First Black president elected",
       "office": "President",
       "state": "United States",
       "dimensions": [
@@ -1254,13 +1254,13 @@
           "url": "https://www.obamalibrary.gov/obamas/president-barack-obama",
           "publisher": "Barack Obama Presidential Library, National Archives",
           "kind": "official_history",
-          "claimSupported": "First black president elected",
+          "claimSupported": "First Black president elected",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         }
       ],
       "dateType": "election",
-      "headline": "First black president elected",
+      "headline": "First Black president elected",
       "year": 2008,
       "eventLabel": "Election",
       "places": [
@@ -1373,7 +1373,7 @@
       "eventYear": 2010,
       "date": null,
       "status": "historical_verified",
-      "summary": "As governor, Haley appointed Tim Scott to a vacant U.S. Senate seat, making him South Carolina’s first black senator.",
+      "summary": "As governor, Haley appointed Tim Scott to a vacant U.S. Senate seat, making him South Carolina’s first Black senator.",
       "qualifier": "Also the state's first woman governor; elected in the same cycle as Susana Martinez (R-NM).",
       "verifiedAsOf": "2026-11-12",
       "sources": [
@@ -1996,7 +1996,7 @@
     {
       "id": "harris-2020",
       "person": "Kamala Harris",
-      "title": "First woman, black American and South Asian American elected vice president",
+      "title": "First woman, Black American and South Asian American elected vice president",
       "office": "Vice President",
       "state": "United States",
       "dimensions": [
@@ -2020,13 +2020,13 @@
           "url": "https://bidenwhitehouse.archives.gov/administration/vice-president-harris/",
           "publisher": "White House (Biden administration), National Archives",
           "kind": "official_biography",
-          "claimSupported": "First woman, black American and South Asian American elected vice president; January 20, 2021 inauguration",
+          "claimSupported": "First woman, Black American and South Asian American elected vice president; January 20, 2021 inauguration",
           "accessStatus": "opened",
           "checkedOn": "2026-11-12"
         }
       ],
       "dateType": null,
-      "headline": "First woman, black American and South Asian American elected vice president",
+      "headline": "First woman, Black American and South Asian American elected vice president",
       "year": 2020,
       "eventLabel": "Election",
       "places": [
@@ -2054,7 +2054,7 @@
       "eventYear": 2020,
       "date": null,
       "status": "historical_verified",
-      "summary": "Torres and Mondaire Jones were elected in the same 2020 election, becoming the first openly gay black men elected to Congress.",
+      "summary": "Torres and Mondaire Jones were elected in the same 2020 election, becoming the first openly gay Black men elected to Congress.",
       "qualifier": "An intersectional milestone; his own floor remarks identify him as the first LGBTQ Afro-Latino member.",
       "verifiedAsOf": "2026-11-12",
       "sources": [
@@ -2308,8 +2308,8 @@
     },
     {
       "id": "two-black-women-senate-2025",
-      "title": "Two black women serve in the U.S. Senate together for the first time",
-      "headline": "Two black women serve in the U.S. Senate together for the first time",
+      "title": "Two Black women serve in the U.S. Senate together for the first time",
+      "headline": "Two Black women serve in the U.S. Senate together for the first time",
       "person": "Angela Alsobrooks and Lisa Blunt Rochester",
       "office": "U.S. Senate",
       "state": "Maryland / Delaware",
@@ -2329,14 +2329,14 @@
       "date": "2025-01-03",
       "status": "historical_verified",
       "summary": "Alsobrooks and Blunt Rochester began their Senate terms together in January 2025.",
-      "qualifier": "Each also became the first black senator elected from her state; Blunt Rochester was Delaware’s first woman senator.",
+      "qualifier": "Each also became the first Black senator elected from her state; Blunt Rochester was Delaware’s first woman senator.",
       "sources": [
         {
           "url": "https://cawp.rutgers.edu/news-media/press-releases/new-report-highlights-decade-gains-and-persistent-gaps-black-women-us",
-          "title": "black Women in American Politics 2025",
+          "title": "Black Women in American Politics 2025",
           "publisher": "Rutgers Center for American Women and Politics",
           "kind": "original_research",
-          "claimSupported": "First simultaneous service of two black women in the Senate",
+          "claimSupported": "First simultaneous service of two Black women in the Senate",
           "checkedOn": "2026-11-13"
         }
       ],
@@ -2439,7 +2439,7 @@
     {
       "id": "2026-aaron-ford",
       "person": "Aaron Ford",
-      "title": "Nevada elects its first black governor",
+      "title": "Nevada elects its first Black governor",
       "office": "Governor",
       "state": "Nevada",
       "dimensions": [
@@ -2451,7 +2451,7 @@
       "date": "2026-11-03",
       "status": "reported-winner-not-certified",
       "summary": "Nevada’s attorney general defeated the Republican incumbent, Joe Lombardo.",
-      "qualifier": "First-black milestone source is a partisan organization; transition confirms win, certification not found.",
+      "qualifier": "First-Black milestone source is a partisan organization; transition confirms win, certification not found.",
       "scope": "Nevada",
       "asOf": "2026-11-12",
       "publishReady": true,
@@ -2468,7 +2468,7 @@
           "url": "https://dems.ag/daga-congratulates-nevada-governor-elect-aaron-ford-for-historic-win/",
           "publisher": "Democratic Attorneys General Association",
           "kind": "primary-partisan-organization-statement",
-          "claimSupported": "First black Nevada governor; prospective service"
+          "claimSupported": "First Black Nevada governor; prospective service"
         }
       ],
       "officeJurisdiction": "Nevada",
@@ -2476,7 +2476,7 @@
       "electionDate": "2026-11-03",
       "certificationStatus": "not-verified",
       "serviceStatus": "prospective",
-      "headline": "Nevada elects its first black governor",
+      "headline": "Nevada elects its first Black governor",
       "year": 2026,
       "eventLabel": "Election",
       "places": [
@@ -2707,7 +2707,7 @@
     {
       "id": "2026-bottoms",
       "person": "Keisha Lance Bottoms",
-      "title": "A black woman wins a U.S. governorship",
+      "title": "A Black woman wins a U.S. governorship",
       "office": "Governor",
       "state": "Georgia",
       "dimensions": [
@@ -2749,18 +2749,18 @@
       "electionDate": "2026-11-03",
       "certificationStatus": "not-verified",
       "serviceStatus": "prospective",
-      "headline": "A black woman wins a U.S. governorship",
+      "headline": "A Black woman wins a U.S. governorship",
       "year": 2026,
       "eventLabel": "Election",
       "places": [
         "Georgia"
       ],
-      "gamePrompt": "A black woman wins election as governor of a U.S. state for the first time."
+      "gamePrompt": "A Black woman wins election as governor of a U.S. state for the first time."
     },
     {
       "id": "2026-colom",
       "person": "Scott Colom",
-      "title": "Mississippi elects a black senator for the first time since 1874",
+      "title": "Mississippi elects a Black senator for the first time since 1874",
       "office": "U.S. Senate",
       "state": "Mississippi",
       "dimensions": [
@@ -2771,7 +2771,7 @@
       "serviceYear": 2027,
       "date": "2026-11-03",
       "status": "reported-winner-not-certified",
-      "summary": "Colom’s reported win makes him the first black Mississippian elected to the U.S. Senate since Blanche K. Bruce in 1874.",
+      "summary": "Colom’s reported win makes him the first Black Mississippian elected to the U.S. Senate since Blanche K. Bruce in 1874.",
       "qualifier": "Bruce was elected by the state legislature in 1874 and last served in 1881. Colom’s Senate service is expected to begin in 2027.",
       "scope": "Mississippi",
       "asOf": "2026-11-12",
@@ -2782,14 +2782,14 @@
           "url": "https://www.dscc.org/article/dscc-statement-congratulating-senator-elect-colom/",
           "publisher": "Democratic Senatorial Campaign Committee",
           "kind": "primary-partisan-organization-statement",
-          "claimSupported": "November 11, 2026 statement identifies Colom as senator-elect and reports his victory; does not certify results or establish the black-representation historical comparison"
+          "claimSupported": "November 11, 2026 statement identifies Colom as senator-elect and reports his victory; does not certify results or establish the Black-representation historical comparison"
         },
         {
           "title": "Colom wins Mississippi Senate race",
           "url": "https://rollcall.com/2026/11/11/scott-colom-wins-mississippi-senate-election/",
           "publisher": "Roll Call",
           "kind": "secondary-election-report",
-          "claimSupported": "AP called race November 11; Colom will be third black Mississippi senator"
+          "claimSupported": "AP called race November 11; Colom will be third Black Mississippi senator"
         },
         {
           "title": "Blanche K. Bruce biography",
@@ -2810,7 +2810,7 @@
           "url": "https://www.senate.gov/art-artifacts/decorative-art/furniture/senate-chamber-desks/occupants/african-americans.htm",
           "publisher": "U.S. Senate",
           "kind": "primary-official-roster",
-          "claimSupported": "Lists Revels (1870–1871) and Bruce (1875–1881) as Mississippi’s historical black senators; later listed black senators served other states"
+          "claimSupported": "Lists Revels (1870–1871) and Bruce (1875–1881) as Mississippi’s historical Black senators; later listed Black senators served other states"
         },
         {
           "title": "All Mississippi senators",
@@ -2837,7 +2837,7 @@
       "serviceStatus": "prospective",
       "lastElectionDate": "1874-02-04",
       "lastServiceDate": "1881-03-03",
-      "headline": "Mississippi elects a black senator for the first time since 1874",
+      "headline": "Mississippi elects a Black senator for the first time since 1874",
       "year": 2026,
       "eventLabel": "Election",
       "places": [
@@ -2848,7 +2848,7 @@
     {
       "id": "2026-crowley",
       "person": "David Crowley",
-      "title": "Wisconsin elects its first black governor",
+      "title": "Wisconsin elects its first Black governor",
       "office": "Governor",
       "state": "Wisconsin",
       "dimensions": [
@@ -2860,7 +2860,7 @@
       "date": "2026-11-03",
       "status": "reported-winner-not-certified",
       "summary": "At 40, Crowley is expected to become the youngest sitting U.S. governor when he takes office in 2027.",
-      "qualifier": "Official transition site confirms election; first-black milestone supported by LDF. Incoming in 2027.",
+      "qualifier": "Official transition site confirms election; first-Black milestone supported by LDF. Incoming in 2027.",
       "scope": "Wisconsin",
       "asOf": "2026-11-12",
       "publishReady": true,
@@ -2885,7 +2885,7 @@
       "electionDate": "2026-11-03",
       "certificationStatus": "not-verified",
       "serviceStatus": "prospective",
-      "headline": "Wisconsin elects its first black governor",
+      "headline": "Wisconsin elects its first Black governor",
       "year": 2026,
       "eventLabel": "Election",
       "places": [
@@ -2944,7 +2944,7 @@
     {
       "id": "2026-donalds",
       "person": "Byron Donalds",
-      "title": "Florida elects its first black governor",
+      "title": "Florida elects its first Black governor",
       "office": "Governor",
       "state": "Florida",
       "dimensions": [
@@ -2996,7 +2996,7 @@
       "electionDate": "2026-11-03",
       "certificationStatus": "not-verified",
       "serviceStatus": "prospective",
-      "headline": "Florida elects its first black governor",
+      "headline": "Florida elects its first Black governor",
       "year": 2026,
       "eventLabel": "Election",
       "places": [
@@ -3358,7 +3358,7 @@
     {
       "id": "2026-kiros",
       "person": "Melat Kiros",
-      "title": "Colorado elects its first black woman to Congress",
+      "title": "Colorado elects its first Black woman to Congress",
       "office": "U.S. House",
       "state": "Colorado",
       "dimensions": [
@@ -3397,7 +3397,7 @@
       "electionDate": "2026-11-03",
       "certificationStatus": "not-verified",
       "serviceStatus": "prospective",
-      "headline": "Colorado elects its first black woman to Congress",
+      "headline": "Colorado elects its first Black woman to Congress",
       "year": 2026,
       "eventLabel": "Election",
       "places": [
@@ -3641,7 +3641,7 @@
     {
       "id": "2026-stratton",
       "person": "Juliana Stratton",
-      "title": "Election sets up three black women serving in the Senate",
+      "title": "Election sets up three Black women serving in the Senate",
       "office": "U.S. Senate",
       "state": "Illinois",
       "dimensions": [
@@ -3653,8 +3653,8 @@
       "serviceYear": 2027,
       "date": "2026-11-03",
       "status": "reported-winner-not-certified",
-      "summary": "Stratton’s election sets up a record three black women serving together in the U.S. Senate in 2027.",
-      "qualifier": "Prospective 2027 record alongside Angela Alsobrooks and Lisa Blunt Rochester; not Illinois's first black woman senator.",
+      "summary": "Stratton’s election sets up a record three Black women serving together in the U.S. Senate in 2027.",
+      "qualifier": "Prospective 2027 record alongside Angela Alsobrooks and Lisa Blunt Rochester; not Illinois's first Black woman senator.",
       "scope": "United States",
       "asOf": "2026-11-12",
       "publishReady": true,
@@ -3675,7 +3675,7 @@
       "electionDate": "2026-11-03",
       "certificationStatus": "not-verified",
       "serviceStatus": "prospective",
-      "headline": "Election sets up three black women serving in the Senate",
+      "headline": "Election sets up three Black women serving in the Senate",
       "year": 2026,
       "eventLabel": "Election",
       "places": [
@@ -3794,7 +3794,7 @@
     {
       "id": "black-house-open",
       "person": "",
-      "title": "18 states have never had a black U.S. representative",
+      "title": "18 states have never had a Black U.S. representative",
       "office": "U.S. House",
       "state": "United States",
       "dimensions": [
@@ -3806,22 +3806,22 @@
       "eventYear": null,
       "date": null,
       "status": "open_gap",
-      "summary": "The House historian’s state-by-state roster identifies 18 states without a black member of Congress.",
+      "summary": "The House historian’s state-by-state roster identifies 18 states without a Black member of Congress.",
       "qualifier": "See the map for the states and distinctions between election and service.",
       "verifiedAsOf": "2026-11-13",
       "sources": [
         {
-          "title": "18 states have never had a black U.S. representative",
+          "title": "18 states have never had a Black U.S. representative",
           "url": "https://history.house.gov/Exhibitions-and-Publications/BAIC/Historical-Data/Black-American-Representatives-and-Senators-by-State-and-Territory/",
           "publisher": "U.S. House historian",
           "kind": "official_history",
-          "claimSupported": "The House historian’s state-by-state roster identifies 18 states without a black member of Congress.",
+          "claimSupported": "The House historian’s state-by-state roster identifies 18 states without a Black member of Congress.",
           "accessStatus": "opened",
           "checkedOn": "2026-11-13"
         }
       ],
       "dateType": null,
-      "headline": "18 states have never had a black U.S. representative",
+      "headline": "18 states have never had a Black U.S. representative",
       "year": null,
       "eventLabel": "Still waiting",
       "places": [
@@ -3834,7 +3834,7 @@
     {
       "id": "black-senate-open",
       "person": "",
-      "title": "41 states have never had a black U.S. senator",
+      "title": "41 states have never had a Black U.S. senator",
       "office": "U.S. Senate",
       "state": "United States",
       "dimensions": [
@@ -3846,22 +3846,22 @@
       "eventYear": null,
       "date": null,
       "status": "open_gap",
-      "summary": "Nine states have been represented by black senators, including senators who were appointed.",
+      "summary": "Nine states have been represented by Black senators, including senators who were appointed.",
       "qualifier": "See the map for the states and distinctions between election and service.",
       "verifiedAsOf": "2026-11-13",
       "sources": [
         {
-          "title": "41 states have never had a black U.S. senator",
+          "title": "41 states have never had a Black U.S. senator",
           "url": "https://www.senate.gov/senators/african-american-senators.htm",
           "publisher": "U.S. Senate Historical Office",
           "kind": "official_history",
-          "claimSupported": "Nine states have been represented by black senators, including senators who were appointed.",
+          "claimSupported": "Nine states have been represented by Black senators, including senators who were appointed.",
           "accessStatus": "opened",
           "checkedOn": "2026-11-13"
         }
       ],
       "dateType": null,
-      "headline": "41 states have never had a black U.S. senator",
+      "headline": "41 states have never had a Black U.S. senator",
       "year": null,
       "eventLabel": "Still waiting",
       "places": [
